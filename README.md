@@ -1,2 +1,0 @@
-# CompGraph
-disciplina computação gráfica
