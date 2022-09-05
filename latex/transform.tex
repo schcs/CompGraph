@@ -1,0 +1,271 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+\usepackage{tikz-cd}
+\usepackage[portuguese]{babel}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\renewcommand{\r}{\mathfrak r}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\R}{\mathbb R}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+\newcommand{\spec}[1]{\mbox{Spec}(#1)}
+\newcommand{\len}{\mbox{len}\,}
+\newcommand{\id}{\mbox{id}\,}
+\newcommand{\sen}{\mbox{sen}\,}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{corollary}{Corolário}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{exercise}[theorem]{Exercício}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Exemplo}
+\newtheorem{definition}[theorem]{Definição}
+
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+
+\title{Transformações lineares}
+\maketitle
+
+\section{Coordenadas}
+Seja $V$ um espaço vetorial de dimensão finita. Seja $B=\{b_1,\ldots,b_n\}$ uma base de $V$ e seja 
+$v\in V$. Então $v$ pode ser escrito unicamente como 
+\[
+    v=\alpha_1b_1+\cdots+\alpha_nb_n.
+\]
+O vetor $[v]_B=(\alpha_1,\ldots,\alpha_n)$ chama se \emph{o vetor das coordenadas} de $v$ na base $B$.
+
+\begin{example}
+    Seja $V=\{(x,y,z)\in\R^3\mid x+y+z=0\}$ e seja $B=\{b_1=(1,0,-1),b_2=(1,-1,0)\}$ (verifique que $V$ é 
+    espaço vetorial com base $B$). Ponha $v=(3,2,-5)$. Então 
+    \[
+        v=5b_1-2b_2,
+    \]
+    e assim $[v]_B=(5,-2)$. 
+\end{example}
+
+\begin{exercise}
+    Verifique que a aplicação $V\to \R^n$ definida por $v\mapsto [v]_B$ é um isomorfismo linear (ou seja, uma aplicação linear 
+    injetiva e sobrejetiva) 
+\end{exercise}
+
+\section{A matriz de uma transformação linear}
+Seja $T:V\to W$ uma transformação linear entre dois espaços vetoriais de dimensão finita. Assuma que 
+$B=\{b_1,\ldots,b_n\}$ é uma base de $V$, enquanto $C=\{c_1,\ldots,c_m\}$ é uma base de $W$. 
+Como $T(b_i)\in W$,  o vetor $T(b_i)$ pode ser escrito como 
+\[
+    T(b_i)=\alpha_{i,1}c_1+\ldots+\alpha_{i,m}c_m
+\]
+com $\alpha_{i,j}\in \R$. Nós definimos a matriz de $T$ relativa às bases $B$ e $C$ como 
+\[
+    [T]_C^B=\begin{pmatrix} \alpha_{1,1} & \cdots & \alpha_{n,1}\\
+        \vdots & \ddots & \vdots \\
+        \alpha_{1,m} & \cdots & \alpha_{n,m}
+    \end{pmatrix}=\left([T(b_1)]_C,\ldots,[T(b_n)]_C\right).
+\]
+Ou seja, a matriz $[T]^B_C$ contém os vetores $[T(b_i)]_C$ nas suas colunas. A matriz $[T]^B_C$ é uma matriz
+$m\times n$. 
+
+\begin{example}
+Considere a transformação $T:\R^3\to V$, $T(x,y,z)=(x-y,y-z,z-x)$ onde $V$ é o mesmo espaço que no exemplo anterior. Seja $B$ a base canônica de $\R^3$ e $C=\{c_1=(1,0,-1),c_2=(0,1,-1)\}$. Então temos que 
+\begin{align*}
+    T(1,0,0)&=(1,0,-1)=c_1\\
+    T(0,1,0)&=(-1,1,0)=-c_1+c_2\\
+    T(0,0,1)&=(0,-1,1)=-c_2.
+\end{align*}
+Logo
+\[
+    [T]^B_C=\begin{pmatrix} 1 & -1 & 0 \\ 0 & 1 & -1\end{pmatrix}
+\]
+\end{example}
+\begin{lemma}\label{lem:matr}
+    Usando a notação no parágrafo anterior, temos que 
+    \[
+        [T(v)]_C=[T]^B_C\cdot [v]_B.
+    \]
+\end{lemma}
+
+Note que no lado direito da equação no Lema~\ref{lem:matr}, o vetor $[v]_B$ é visto como vetor coluna 
+para a multiplicação fazer sentido. Isso poderia ser denotado por $[v]_B^t$, mas nós escolhemos a 
+notação mais simples. 
+
+\begin{proof}
+    Primeiro assuma que $v=b_i\in B$. Então $[T(b_i)]_C$ é justamente a $i$-ésima coluna de $[T]^B_C$ 
+    e $[b_i]_B$ é o $i$-ésimo vetor na base canônica de $\R^m$. 
+    Logo temos obviamente que $[T(b_i)]_C=[T]^B_C\cdot [b_i]_B$. Quando $v\in V$ é arbitrário, escreva que 
+    \[
+        v=\beta_1b_1+\cdots+\beta_n b_n;
+    \]
+    ou seja, $[v]_B=(\beta_1,\ldots,\beta_n)$. Ora,
+    \begin{align*}
+        [T(v)]_C&=[T(\beta_1b_1+\cdots+\beta_n b_n)]_C\\&=
+        \beta_1 [T(b_1)]_C+\cdots +\beta_n [T(b_n)]_C\\&=
+        \beta_1 [T]^B_C\cdot e_1+\cdots +\beta_n[T]^B_C\cdot e_n\\&=
+        [T]^B_C \cdot [v]_B
+    \end{align*}
+    onde $e_1,\ldots,e_n$ são os vetores (colunas) da base canônica de $\R^n$.
+\end{proof}
+
+\section{Mudança de base}
+Seja $V$ um espaço vetorial com duas bases $B=\{b_1,\ldots,b_n\}$ e $C=\{c_1,\ldots,c_n\}$. A transformação 
+$\id:V\to V$, $\id(v)=v$  é linear e podemos considerar a sua matriz $[\id]_B^C$. Pelo que fizemos 
+nas seções anteriores
+\[
+    [\id]_B^C=\begin{pmatrix} \alpha_{1,1} & \cdots & \alpha_{n,1}\\
+        \vdots & \ddots & \vdots \\
+        \alpha_{1,m} & \cdots & \alpha_{n,m}
+    \end{pmatrix}=\left([c_1]_B,\ldots,[c_n]_B\right)
+\]
+onde os coeficientes estão determinados pelas equações 
+\[
+    c_i=\alpha_{i,1}b_1+\cdots+\alpha_{i,n}b_n.
+\]
+A matriz $[\id]_B^C$ chama-se \emph{matriz mudança de base} (de $B$ para $C$).
+
+\begin{lemma}
+    Usando a notação no parágrafo anterior, temos que 
+    \[
+        [v]_B=[\id]_B^C\cdot [v]_C.
+    \]
+\end{lemma}
+\begin{proof}
+    Segue do Lema~\ref{lem:matr}.
+\end{proof}
+
+\begin{exercise}
+    Demonstre que $[\id]_C^B=([id]_B^C)^{-1}$. 
+\end{exercise}
+
+\begin{example}
+    Seja $V=\R^2$, $B=\{e_1,e_2\}$ (a base canônica), e $C=\{c_1=(1,1),c_2=(1,-1)\}$. Logo
+    \[
+        [\id]_B^C=\begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix}\quad \mbox{e}\quad 
+        [\id]_C^B=\left([\id]_B^C\right)^{-1}=\frac 12[\id]_B^C.
+    \] 
+    Seja $v=(-1,2)$. Então $[v]_B=(-1,2)$ e 
+    \[
+        [v]_C=[\id]^B_C[v]_B=(1/2,-3/2).
+    \]
+    De fato $v=(1/2)c_1-(3/2)c_2$.
+\end{example}
+
+\begin{exercise}\label{ex:comp}
+    Sejam $T_1:V\to U$ e $T_2:U\to W$ transformações lineares, e sejam $B$, $C$, e $D$ bases de 
+    $V$, $U$, e $W$, respetivamente. Mostre que 
+    \[
+    [T_2\circ T_1]^B_D=[T_2]^C_D\cdot [T_1]^B_C.
+\]
+\end{exercise}
+
+
+\section{Transformações lineares e mudança de base}
+
+Seja $T:V\to W$ uma transformação linear entre os espaços $V$ e $W$ de dimensão finita. Sejam 
+$B$, $B'$ bases de $V$ e $C$, $C'$ bases de $W$. 
+
+\begin{lemma}
+    Temos que 
+    \[
+        [T]_{C'}^{B'}=[\id_W]_{C'}^C\cdot [T]^B_C\cdot [\id_V]_B^{B'}.        
+    \]
+\end{lemma}
+\begin{proof}
+    Aplique o Exercício~\ref{ex:comp}.
+\end{proof}
+
+Quando $T:V\to V$ é um endomorfismo, nós geralmente calculamos a matriz $[T]_B^B$. Se $B$ e $C$ são duas bases de $T$, então temos que 
+\[
+    [T]_C^C=[\id]_C^B\cdot [T]_B^B\cdot [\id]_B^C=[\id]_C^B\cdot [T]_B^B\cdot([\id]_C^B)^{-1}.
+\]
+
+Note que se $Y$ é uma matriz e $X$ é uma matriz invertível $n\times n$, então diz-se que a 
+ matriz $XYX^{-1}$ é um conjugada de $Y$. 
+
+ \begin{exercise}
+    Sejam $Y_1$ e $Y_2$ matrizes conjugadas. Demonstre as seguintes afirmações. 
+    \begin{enumerate}
+        \item $\det Y_1=\det Y_2$.
+        \item $Y_1$ e $Y_2$ têm os mesmos autovalores.
+        \item Seja $Y_2=XY_1X^{-1}$ e seja $v\in\R^n$. Então $v$ é um autovetor de $Y_1$ se e somente se 
+        $Xv$ é autovetor de $Y_2$. Além disso $v$ e $Xv$ correspondem ao mesmo autovalor.
+    \end{enumerate}
+ \end{exercise}
+
+\section{Um exemplo detalhado: As reflexões}
+
+Assuma que $t=(a,b)\in\R^2$ é um vetor com $||t||=\sqrt{a^2+b^2}=1$. Define 
+\[
+    R_t:\R^2\to \R^2,\quad R_t(v)=v-2(v\cdot t)t
+\] 
+onde $v\cdot t$ denota o produto escalar entre $v$ e $t$. É fácil verificar que $R_t$ é linear. 
+Seja $t'=(b,-a)$ um vetor normal (ortoginal) ao vetor $t$. Então temos que $t\cdot t=1$ e $t\cdot t'=0$  
+e assim 
+\[
+    R_t(t)=-t\quad\mbox{enquanto}\quad R_t(t')=t'.
+\] 
+Como vetores $t$  e $t'$ formam uma base $C$, faz sentido perguntar a matriz de $R_t$ nesta base. De fato 
+\[
+    [R_t]_C^C=\begin{pmatrix} -1 & 0 \\ 0 & 1\end{pmatrix}.
+\]  
+Seja $B$ a base canônica de $\R^2$. Então temos que 
+\[
+    [\id]_B^C=\begin{pmatrix} a & b \\ b & -a \end{pmatrix}.
+\]
+Além disso, $[\id]_B^C$ é uma matriz ortogonal simêtrica, e assim $[\id]_C^B=([\id]_B^C)^{-1}=[\id]_B^C$. 
+Logo 
+\[
+    [R_t]_B^B=[\id]_B^C \cdot [R_t]_C^C\cdot [\id]_C^B=
+    \begin{pmatrix} a & b \\ b & -a \end{pmatrix}\begin{pmatrix} -1 & 0 \\ 0 & 1\end{pmatrix}
+    \begin{pmatrix} a & b \\ b & -a \end{pmatrix}=\begin{pmatrix}-a^2+b^2 & -2ab \\ -2ab & a^2-b^2
+    \end{pmatrix}.
+\]
+Alternativamente, podemos verificar com conta direta que 
+\[
+    R_t(1,0)=(1-2a^2,-2ab)\quad\mbox{e}\quad R_t(0,1)=(-2ab,1-2b^2)
+\]
+e que 
+\[
+    [R_t]_B^B=\begin{pmatrix} 1-2a^2 & -2ab \\ -2ab & 1-2b^2\end{pmatrix}.
+\]
+Como $a^2+b^2=1$ as duas matrizes que obtivemos para $[R_t]_B^B$ são de fato iguais. 
+
+Usando que $a^2+b^2=1$, podemos escrever $a=\cos\alpha$ e $b=\sen\alpha$ com algum ângulo $\alpha\in[0,2\pi]$.
+Assim obtemos que 
+\[ 
+    [R_t]_B^B=\begin{pmatrix} -\cos^2\alpha +\sen^2\alpha & -2\cos \alpha\cdot \sen\alpha\\ 
+        -2\cos \alpha\cdot \sen\alpha & \cos^2\alpha-\sen^2\alpha\end{pmatrix}
+        =\begin{pmatrix}-\cos(2\alpha) & -\sen(2\alpha) \\ -\sen(2\alpha) & \cos(2\alpha)
+        \end{pmatrix}.
+\]
+Seja $\alpha=\alpha'+\pi/2$. Com $\alpha'$ podemos escrever $[R_t]_B^B$ na forma ainda mais simples 
+como 
+\[
+    [R_t]_B^B=\begin{pmatrix}\cos(2\alpha') & \sen(2\alpha') \\ \sen(2\alpha) & -\cos(2\alpha').
+    \end{pmatrix}
+\]
+\end{document}

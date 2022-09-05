@@ -1,0 +1,299 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+\usepackage{tikz-cd}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\renewcommand{\r}{\mathfrak r}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\R}{\mathbb R}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+\newcommand{\spec}[1]{\mbox{Spec}(#1)}
+\newcommand{\len}{\mbox{len}\,}
+\newcommand{\id}{\mbox{id}\,}
+\newcommand{\sen}{\mbox{sen}\,}
+\newcommand{\gl}[1]{\mbox{GL}_{#1}}
+\newcommand{\SL}[1]{\mbox{SL}_{#1}}
+\newcommand{\glv}[1]{\mbox{GL}(#1)}
+\newcommand{\slv}[1]{\mbox{SL}(#1)}
+\newcommand{\Sym}{\mbox{Sym}}
+\usepackage[portuguese]{babel}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{corollary}{Corolário}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{exercise}[theorem]{Exercício}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Exemplo}
+\newtheorem{definition}[theorem]{Definição}
+
+
+
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+
+\title{Os movimentos do plano}
+\maketitle
+
+\section{Transformações}
+
+Seja $\Omega$ um conjunto. Uma aplicação $f:\Omega\to \Omega$ chama-se uma \emph{transformação} de $\Omega$. A transformação $f$ é dita \emph{injetiva} se $f(v)=f(w)$ implica $v=w$ para todo $v,w\in\Omega$;
+$f$ chama-se \emph{sobrejetiva} se para todo $w\in\Omega$ existe $v\in\Omega$ tal que $f(v)=w$. A transformação
+$f$ chama-se \emph{bijetiva} ou \emph{invertível} se ela é injetiva e sobrejetiva. Se $f$ é uma transformação 
+invertível, então existe a sua inversa $f^{-1}:\Omega\to\Omega$ definida pela regra que 
+$f(v)=w$ se e somente se $f^{-1}(w)=v$ para todo $v,w\in\Omega$.  
+
+As transformações de $\Omega$ podem ser compostas. Se $f,g:\Omega\to \Omega$ então $f\circ g:\Omega\to \Omega$ 
+é definida como $(f\circ g)(v)=f(g(v))$ para todo $v\in \Omega$. A composição de transformações é associativa no sentido que $(f\circ g)\circ h=f\circ(g\circ h)$ para todo $f,g,h:\Omega\to \Omega$. 
+
+Nós vamos estudar principalmente as transformações do plano $\R^2$ e o espaço $\R^3$. 
+
+\begin{example}
+    Todo conjunto $\Omega$ tem a transformação identidade $\id_\Omega:\Omega\to \Omega$, $v\mapsto v$ 
+    para todo $v\in\Omega$. Se $f:\Omega\to\Omega$ é uma transformação invertível, então 
+    $f\circ f^{-1}=f^{-1}\circ f=\id_\Omega$. 
+\end{example}
+
+\begin{example}
+    Seja $\Omega=\R^n$ com $n\geq 1$. Uma transformação $T:\R^n\to\R^n$ é dita linear se 
+    \[
+        T(\alpha v+\beta w)=\alpha T(v)+\beta T(w)
+    \]
+    para todo $v,w\in\R^n$ e $\alpha,\beta\in\R$. Transformações lineares são estudadas em álgebra linear.
+    Uma transformação linear $T:\R^n\to \R^n$ é invertível se e somente se 
+    \[
+        \ker T=\{v\in \R^n\mid T(v)=0\}=\{0\}.
+    \]
+\end{example}
+
+\begin{example}
+    Seja $t\in\R^n$ e considere a transformação $T_t:\R^n\to \R^n$ definido como 
+    \[
+        T_t(v)=v+t.
+    \]
+    A transformação $T_t$ é chamado \emph{a translação de $\R^n$} pelo vetor $t$. Note que se 
+    $t\neq 0$, então $T_t$ não é linear, pois $T_t(0)=t\neq 0$. A transformação $T_t$ é invertível e 
+    $T_t^{-1}=T_{-t}$. 
+\end{example}
+
+\section{Grupos}
+Seja $G$ um conjunto não vazio com uma operação que pode ser denotada por $\cdot$ (ou por $+$, ou simplesmente 
+por concatenação). Isso quer dizer que com cada par de elementos 
+$a,b\in G$ associamos um elemento $a\cdot b\in G$. O conjunto $G$ considerado com a operação $\cdot$ é dito 
+\emph{grupo} se as seguintes propriedades estão válidas para todo $a,b,c\in G$. 
+\begin{enumerate}
+    \item A operação $\cdot$ é associativa; ou seja $a\cdot(b\cdot c)=(a\cdot b)\cdot c$. 
+    \item Existe identidade $1\in G$ tal que $1\cdot a=a\cdot 1=a$.
+    \item Todo elemento $a\in G$ possui inverso $a^{-1}$ que satisfaz $a\cdot a^{-1}=a^{-1}a=1$. 
+\end{enumerate} 
+Um grupo $G$ é dito \emph{abeliano} ou \emph{comutativo} se $ab=ba$ para todo $a,b\in G$. 
+
+
+\begin{example}
+    O conjunto $\Z$ dos inteiros é um grupo abeliano com a operação de adição. 
+    A mesma coisa vale para $\Q$, $\R$, $\C$. Se $V$ é um espaço vetorial, então $V$ é um grupo abeliano
+    com a operação de adição. 
+\end{example}
+
+Nós vamos considerar dois tipos de grupos, nomeadamente grupos de transformações e grupos de matrizes.
+
+\begin{example}
+    Seja $n\geq 1$, e seja $G$ um conjunto não vazio de matrizes invertíveis $n\times n$ tal que $G$ é fechado para multiplicação e se $X\in
+    G$, então     $X^{-1}\in G$. Então $G$ é um grupo com a multiplicação matricial. Um tal grupo $G$ é chamado um \emph{grupo de matrizes} ou \emph{grupo matricial}. 
+    Os primeiros exemplos de grupos matriciails são
+    \begin{align*}
+        \gl n&=\{X\mbox{ é matriz $n\times n$}\mid X\mbox{ é invertível}\}\\
+        \SL n&=\{X\in\gl n\mid \det X=1\}.
+    \end{align*}
+    Os conjuntos $\gl n$ e $\SL n$ são grupos. É óbvio que $\SL n\subseteq \gl n$ e neste caso dizemos que 
+    $\SL n$ é um subgrupo de $\gl n$ e escrevemos que $\SL n\leq \gl n$. 
+\end{example}
+
+\begin{example}
+    Seja $G$ um conjunto de transformações invertíveis de um conjunto $\Omega$ tal que $G$ é fechado para 
+    a composição e $T^{-1}\in G$ sempre quando $T\in G$. Neste caso $G$ é um grupo. Tal grupo chama-se 
+    um \emph{grupo de transformações}. Por exemplo seja $\Omega=V$ um espaço vetorial de dimensão finita
+    e considere 
+    \begin{align*}
+        \Sym(V)&=\{f:V\to V\mid f \mbox{ é injetiva}\}\\
+        \glv V&=\{T:V\to V\mid \mbox{$T$ é linear e invertível}\}\\
+        \slv V&=\{T\in \glv V\mid \det T=1\}.
+    \end{align*}
+    O conjunto $\mathcal T(V)=\{T_t\mid t\in V\}$ de um espaço vetorial $V$ é um grupo pois 
+    $T_{t_1}\circ T_{t_2}=T_{t_1+t_2}$ e $T_{t}^{-1}=T_{-t}$ (ou seja este conjunto é fechado para  
+    a composição e para os inversos). Como 
+    \[
+        T_{t_1}\circ T_{t_2}=T_{t_1+t_2}=T_{t_2+t_1}=T_{t_2}\circ T_{t_1},
+    \]
+    temos que $\mathcal T(V)$ é um grupo abeliano.
+\end{example}
+
+\begin{lemma}
+    Seja $t\in V$ e $X\in \glv V$. Então $XT_tX^{-1}=T_{X(t)}$.  
+\end{lemma}
+\begin{proof}
+    Seja $v\in V$ e computemos que 
+    \[
+        XT_tX^{-1}(v)=XT_t(X^{-1}(v))=X(X^{-1}(v)+t)=v+X(t)=T_{X(t)}(v).
+    \]
+\end{proof}
+
+\begin{theorem}
+    Assuma que $G$ é um subgrupo de transformações de $\glv V$ e seja $\mathcal T$ o grupo de translações. 
+    Então o produto $\mathcal TG=\{T_tX\mid t\in V,\ X\in G\}$ é um subgrupo de $\Sym(V)$. 
+\end{theorem}
+\begin{proof}
+    Seja $Y$ o conjunto de produtos no enunciado do teorema. Precisamos provar que $Y$ é fechado para 
+    a composição e para tomar inversos. Sejam $T_{t_1}X_1$ e $T_{t_2}X_2$. Então temos que 
+    \[
+        (T_{t_1}X_{1})(T_{t_2}X_2)=T_{t_1}X_{1}T_{t_2}(X_1^{-1}X_1)X_2=
+        T_{t_1}(X_{1}T_{t_2}X_1^{-1})X_1X_2=(T_{t_1}T_{X_1(t_2)})(X_1X_2)\in Y.
+    \]  
+    Além disso, temos que 
+    \[
+        (T_tX)^{-1}=X^{-1}T_t^{-1}=X^{-1}T_{-t}=X^{-1}T_{-t}XX^{-1}=T_{X^{-1}(-t)}X^{-1}\in Y.
+    \]
+\end{proof}
+\section{Isometrias de $\R^n$}
+
+Considere o espaço $\R^n$. Lembre que o produto escalar (ou produto interno) de dois vetores 
+$v=(\alpha_1,\ldots,\alpha_n)$ e $w=(\beta_1,\ldots,\beta_n)$ é definido como 
+\[
+    v\cdot w=\alpha_1\beta_1+\cdots+\alpha_n\beta_n.
+\]
+O produto escalar pode ser escrita usando multiplicação matricial como 
+\[
+    v\cdot w=vw^t.
+\]
+Usando o produto escalar, podemos definir a norma $\|v\|$ de um vetor $v\in\R^n$ como
+\[
+    \|v\|=\sqrt{v\cdot v}.
+\] 
+A distância entre dois vetores $v,w\in \R^n$ pode ser definida como 
+\[
+    d(v,w)=\|v-w\|.
+\]
+Alêm disso, o cosseno do ângulo $\vartheta$ entre $v$ e $w$ é definido como 
+\[
+    \cos\vartheta=\frac{v\cdot w}{\|v\|\|w\|}
+\]
+Dois vetores $v,w\in \R^n$ são ortogonais se e somente se $v\cdot w=0$.
+
+Da definição da norma fica clara que a norma está determinada pelo produto escalar. De acrodo do lema seguinte, 
+a norma determina o produto escalar.
+
+\begin{theorem}[Identidade de polarização]   Sejam $v,w\in \R^n$, então 
+    \[
+        v\cdot w=\frac 12\left(\|v+w\|-\|v\|-\|w\|\right).
+\]
+\end{theorem}
+\begin{proof}
+    Exercício.
+\end{proof}
+
+Uma transformação $T:\R^n\to\R^n$ que preserva distância (ou seja $d(T(v),T(w))=d(v,w)$ para 
+todo $v,w\in \R^n$) chama-se \emph{isometria} de $\R^n$. Se $T$ é uma isometria e $T(v)=T(w)$, então 
+\[
+    0=d(T(v),T(w))=d(v,w);
+\]
+ou seja $v=w$. Isso implica que uma isometria é necessáriamente injetiva. Vamos ver que isometrias são 
+também sobrejetivas, mas neste momenta esta afirmação não é tão fácil de provar. Por outro lado, se 
+$T:\R^n\to\R^n$ é  uma isometria \emph{linear}, então ela é injetiva e precisa ser sobrejetiva. Logo, as 
+isometrias lineares são invertíveis.
+
+\begin{example}
+    A translação $T_t:\R^n\to \R^n$ é uma isometria para todo $t\in\R^n$. De fato, temos 
+    para $v,w\in\R^n$ que 
+    \[
+        d(v+t,w+t)=\|v+t-(w+t)\|=\|v-w\|=d(v,w).
+    \]
+\end{example}
+
+\section{O grupo ortogonal}
+
+\begin{theorem}
+Seja $T:\R^n\to \R^n$ uma transformação linear. As seguintes são equivalentes para $T$.
+\begin{enumerate}
+    \item $T$ preserva o produto escalar; ou seja $T(v)\cdot T(w)=v\cdot w$ para todo $v,w\in\R^n$. 
+    \item $T$ preserva a norma; ou seja $\|T(v)\|=\|v\|$ para todo $v\in\R^n$;
+    \item $T$ preserva a distância $d(T(v),T(w))=d(v,w)$ para todo $v,w\in\R^n$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    O fato que (1) implica (2) e que (2) implica (3) segue das definições da norma e da distância. O fato que 
+    (3) implica (1) segue dos fatos que $\|v\|=d(v,0)$, $T(0)=0$ ($T$ sendo linear)  e da identidade de polarização.
+\end{proof}
+
+
+Uma transformação linear $T:\R^n\to \R^n$ chama se \emph{ortogonal} se $T$ satisfaz uma (e então todas) das propriedades no teorema anterior. Por definição, as transformações ortogonais são exatamente as isometrias lineares do espaço $\R^n$.  Lembre que uma matriz $X$ é dita ortogonal se $X^tX=I$.
+
+\begin{theorem}
+    As seguintes afirmações são verdadeiras.
+    \begin{enumerate}
+        \item As transformações ortogonais formam um subgrupo de $\glv V$.
+        \item Uma transformação $T:\R^n\to \R^n$ é ortogonal se e somente se sua matriz na base 
+        canônica é ortogonal.
+        \item O determinante de uma transformação ortogonal é $\pm 1$.  
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    (1) Pode mostrar com uma conta direta que a composição de duas transformações ortogonais é ortogonal 
+    e o inverso de uma transformação ortogonal é também ortogonal.
+
+    (2) Se $T:\R^n\to \R^n$ é uma isometria linear, então $T$ preserva a norma de vetores e o ângulo entre vetores.
+    Como os vetores $e_1,\ldots,e_n$ na base canônica formam um sistema ortonormal, 
+    os vetores $T(e_1),\ldots,T(e_n)$ também formam um sistema ortonormal. Isso quer dizer que 
+    $[T]_B^B$ é uma matriz ortogonal.
+    
+    Assuma agora que $T:\R^n\to \R^n$ é uma transformação linear tal que a sua matriz 
+    $X$ na base canônica é ortogonal. Sejam $v,w\in\R^n$. Então  
+    \[
+        v\cdot w=vw^t=vX^tXw^t=(Xv^t)^t(Xw^t)=(Xv)\cdot (Xw)=T(v)\cdot T(w).
+    \]
+    Ou seja, $T$ preserva produto escalar e $T$ é uma isometria. 
+
+    (3) Seja $T:\R^n\to \R^n$ uma isometria. Temos que $\det T=\det X$ onde $X$ é a matriz de $T$ na 
+    base canônica. Como $X$ é uma matriz ortogonal, temos que 
+    \[
+        1=\det I=\det(X^tX)=\det(X^t)\det X=(\det X)^2
+    \]
+    e segue que $\det T=\det X=\pm 1$. 
+\end{proof}
+
+O grupo das transformações ortogonais de $\R^n$ é denotado por $O_n$. O subgrupo das transformações 
+ortogonais com determinante $1$ é denotado por $SO_n$. Os grupos $O_n$ e $SO_n$ são chamados 
+\emph{grupo ortogonal} e \emph{grupo especial ortogonal}. Os elementos de $SO_n$ são chamadas de \emph{rotações}
+enquanto os demais elementos de $O_n$ são chamadas de \emph{reflexões}.
+
+
+
+
+
+
+
+\end{document}
