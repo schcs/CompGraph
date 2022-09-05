@@ -1,0 +1,98 @@
+\documentclass{amsart}
+
+
+\usepackage{verbatim}
+\usepackage{amssymb}
+
+\usepackage[brazilian]{babel}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+
+\newcommand{\sym}[1]{{\mathsf S}_{#1}}
+\newcommand{\alt}[1]{{\mathsf A}_{#1}}
+\newcommand{\SL}[2]{{\sf SL}(#1,#2)}
+\newcommand{\GL}[2]{{\sf GL}(#1,#2)}
+\newcommand{\N}{\mathbb N}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\nullvec}{\overline 0}
+
+\newcommand{\mat}[2]{{\mathsf M}_{#1,#2}}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+\parskip 5pt
+\parindent 0pt
+
+\begin{document}
+
+
+\begin{center}
+\large Geometria com aplicações na gráfica computacional\\
+{\bf\large Folha 1 de exercícios}\\
+csaba@mat.ufmg.br
+\end{center}
+
+
+\bigskip
+
+{\bf 1.} 
+Seja $V$ um espaço vetorial de dimensão $n$ e seja $B$ uma base de $V$.    
+Demonstre que a aplicação $V\to \R^n$ definida por $v\mapsto [v]_B$ é um isomorfismo linear (ou seja, uma aplicação linear 
+    injetiva e sobrejetiva).
+
+\medskip
+
+{\bf 2.} Seja $V$ um espaço vetorial com bases $B$ e $C$.
+    Demonstre que $[\mbox{id}]_C^B=([\mbox{id}]_B^C)^{-1}$. 
+
+    \medskip
+
+{\bf 3.} Sejam $T_1:V\to U$ e $T_2:U\to W$ transformações lineares, e sejam $B$, $C$, e $D$ bases de 
+$V$, $U$, e $W$, respetivamente. Mostre que 
+\[
+[T_2\circ T_1]^B_D=[T_2]^C_D\cdot [T_1]^B_C.
+\]
+
+\medskip
+
+
+{\bf 4.} 
+    Sejam $Y_1$ e $Y_2$ matrizes conjugadas. Demonstre as seguintes afirmações. 
+    \begin{enumerate}
+        \item $\det Y_1=\det Y_2$.
+        \item $Y_1$ e $Y_2$ têm os mesmos autovalores.
+        \item Seja $Y_2=XY_1X^{-1}$ e seja $v\in\R^n$. Então $v$ é um autovetor de $Y_1$ se e somente se 
+        $Xv$ é autovetor de $Y_2$. Além disso $v$ e $Xv$ correspondem ao mesmo autovalor.
+    \end{enumerate}
+
+    \medskip
+
+{\bf 5.} O traço $\mbox{Tr}\,X$ de uma matriz quadrada $X$ é a soma dos seus elementos diagonais. 
+\begin{enumerate}
+    \item Mostre que $\mbox{Tr}(XY)=\mbox{Tr}(YX)$ para toda matriz $X,Y$ diagonal $n\times n$.
+    \item Mostre que se $X$ e $Y$ são matrizes conjugadas, então $\mbox{Tr}\,X=\mbox{Tr}\,Y$.
+\end{enumerate}
+[Obs.: A afirmação (2) segue também do exercício anterior.]
+
+\medskip
+
+
+{\bf 6.} Seja $T:\R^2\to \R^2$ uma matriz nilpotente (ou seja $T^k$ é a transformação nula com algum $k\geq 1$).
+Mostre que $T^2=0$ e existe uma base $B$ de $\R^2$ tal que 
+\[
+    [T]_B^B=\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+\]
+
+\end{document}
+
