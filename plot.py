@@ -20,3 +20,10 @@ def draw_ph( screen, ph, color = 255 ):
         for i in range( 1, len(face)):
             pygame.draw.line( screen, color, t(ph.points[face[i-1]-1]), t(ph.points[face[i]-1]) )
 
+
+def draw_pg( screen, pg, color = 255 ):
+
+    t = lambda p: (p[0]+300, -p[1]+240 )
+    for i in range( pg.edges-1 ):
+        p1, p2 = pg.edges[i], pg.edges[i+1]
+        pygame.draw.line( screen, color, t(pg.points[p1-1]-1), t(pg.points[p2-1]-1) )

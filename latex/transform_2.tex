@@ -140,8 +140,8 @@ Nós vamos considerar dois tipos de grupos, nomeadamente grupos de transformaç�
     um \emph{grupo de transformações}. Por exemplo seja $\Omega=V$ um espaço vetorial de dimensão finita
     e considere 
     \begin{align*}
-        \Sym(V)&=\{f:V\to V\mid f \mbox{ é injetiva}\}\\
-        \glv V&=\{T:V\to V\mid \mbox{$T$ é linear e invertível}\}\\
+        \Sym(V)&=\{f:V\to V\mid f \mbox{ é invertível}\}\\
+        \glv V&=\{T\in\Sym(V)\mid \mbox{$T$ é linear}\}\\
         \slv V&=\{T\in \glv V\mid \det T=1\}.
     \end{align*}
     O conjunto $\mathcal T(V)=\{T_t\mid t\in V\}$ de um espaço vetorial $V$ é um grupo pois 
@@ -186,7 +186,7 @@ $v=(\alpha_1,\ldots,\alpha_n)$ e $w=(\beta_1,\ldots,\beta_n)$ é definido como
 \[
     v\cdot w=\alpha_1\beta_1+\cdots+\alpha_n\beta_n.
 \]
-O produto escalar pode ser escrita usando multiplicação matricial como 
+O produto escalar pode ser escrito usando multiplicação matricial como 
 \[
     v\cdot w=vw^t.
 \]
