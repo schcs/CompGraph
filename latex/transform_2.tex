@@ -2,7 +2,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{showkeys}
-\usepackage{tikz-cd}
+%\usepackage{tikz-cd}
 
 \renewcommand{\a}{\mathfrak a}
 \renewcommand{\b}{\mathfrak b}
@@ -34,7 +34,7 @@
 \usepackage[portuguese]{babel}
 
 \newtheorem{theorem}{Teorema}
-\newtheorem{corollary}{Corolário}[theorem]
+\newtheorem{corollary}[theorem]{Corolário}
 \newtheorem{lemma}[theorem]{Lema}
 \newtheorem{exercise}[theorem]{Exercício}
 
@@ -57,7 +57,7 @@
 
 \begin{document}
 
-\title{Isometrias de $\R^n$}
+\title[Isometrias do espaço]{Isometrias de $\R^n$}
 \maketitle
 
 \section{Transformações}
@@ -222,7 +222,7 @@ todo $v,w\in \R^n$) chama-se \emph{isometria} de $\R^n$. Se $T$ é uma isometria
     0=d(T(v),T(w))=d(v,w);
 \]
 ou seja $v=w$. Isso implica que uma isometria é necessáriamente injetiva. Vamos ver que isometrias são 
-também sobrejetivas, mas neste momenta esta afirmação não é tão fácil de provar. Por outro lado, se 
+também sobrejetivas, mas neste momento esta afirmação não é tão fácil de provar. Por outro lado, se 
 $T:\R^n\to\R^n$ é  uma isometria \emph{linear}, então ela é injetiva e precisa ser sobrejetiva. Logo, as 
 isometrias lineares são invertíveis.
 
@@ -233,6 +233,7 @@ isometrias lineares são invertíveis.
         d(v+t,w+t)=\|v+t-(w+t)\|=\|v-w\|=d(v,w).
     \]
 \end{example}
+
 
 \section{O grupo ortogonal}
 
@@ -285,15 +286,87 @@ Uma transformação linear $T:\R^n\to \R^n$ chama se \emph{ortogonal} se $T$ sat
     e segue que $\det T=\det X=\pm 1$. 
 \end{proof}
 
-O grupo das transformações ortogonais de $\R^n$ é denotado por $O_n$. O subgrupo das transformações 
-ortogonais com determinante $1$ é denotado por $SO_n$. Os grupos $O_n$ e $SO_n$ são chamados 
-\emph{grupo ortogonal} e \emph{grupo especial ortogonal}. Os elementos de $SO_n$ são chamadas de \emph{rotações}
-enquanto os demais elementos de $O_n$ são chamadas de \emph{reflexões}.
+O grupo das transformações ortogonais de $\R^n$ é denotado por $O(\R^n)$. O subgrupo das transformações 
+ortogonais com determinante $1$ é denotado por $SO(\R^n)$. Os grupos $O(\R^n)$ e $SO(\R^n)$ são chamados 
+\emph{grupo ortogonal} e \emph{grupo especial ortogonal}. Os elementos de $SO(\R^n)$ são chamadas 
+de \emph{rotações}
+enquanto os demais elementos de $O(\R^n)$ são chamadas de \emph{reflexões}.
 
+\begin{lemma}
+    Seja $T:\R^n\to\R^n$ uma transformação tal que $T(0)=0$. $T$ é uma isometria se e somente se 
+    $T$ preserva o produto interno (ou seja, $T(u)\cdot T(v)=u\cdot v$). 
+\end{lemma}
+\begin{proof}
+Assuma primeiro que $T$ é uma isometria. Sejam $u,v\in \R^n$. Então
+\[
+    \|T(u)-T(v)\|=d(T(u),T(v))=d(u,v)=\|u-v\|.
+\]  
+Note que, tomando $v=0$, isso implica que 
+\[
+\|T(u)\|=\|u\|,
+\]
+ou seja, $T$ preserva norma.
+Ora,
+\[
+    \|T(u)-T(v)\|^2=\|u-v\|^2
+\]
+e assim 
+\[
+    (T(u)-T(v))\cdot (T(u)-T(v))=(u-v)\cdot (u-v).
+\]
+Agora segue que 
+\[
+    \|T(u)\|^2+\|T(v)\|^2-2T(u)\cdot T(v)=\|u\|^2+\|v\|^2-2(u,v).
+\]
+Considerando que $\|T(v)\|=\|v\|$ e $\|T(u)\|=\|u\|$, obtemos que 
+\[
+T(v)\cdot T(u)=u\cdot v.
+\]
 
+Vice versa, assuma que $T$ preserve a produto interno. Então 
+\begin{align*}
+    d(T(u),T(v))^2&=\|T(u)-T(v)\|^2=(T(u)-T(v))\cdot (T(u)-T(v))\\&=
+    T(u)\cdot T(u)-2T(u)\cdot T(v)+T(v)\cdot T(v)\\&=
+    u\cdot u-2u\cdot v+v\cdot v=(u-v)\cdot(u-v)=\|u-v\|^2\\&=d(u,v)^2.
+\end{align*}
+Logo $d(T(u),T(v))=d(u,v)$ e $d$ é uma isometria.
+\end{proof}
+\begin{corollary}
+    Seja $T:\R^n\to \R^n$ uma isometria tal que $T(0)=0$. Então $T$ é linear e consequentemente $T$ é uma 
+    transformação ortogonal.
+\end{corollary}
+\begin{proof}
+Primeiro provaremos que $T(\alpha v)=\alpha T(v)$ para todo $v\in \R^n$. 
+Pelo lema anterior, $T$ preserva o produto interno, e assim 
+\begin{align*}
+    \|T(\alpha v)-\alpha T(v)\|^2&=(T(\alpha v)-\alpha T(v))\cdot (T(\alpha v)-\alpha T(v))
+    \\&=T(\alpha v)\cdot T(\alpha v)-2\alpha T(\alpha v)\cdot T(v)+\alpha^2T(v)\cdot T(v)\\&=
+    (\alpha v)\cdot (\alpha v)-2\alpha (\alpha v)\cdot v+\alpha^2 v\cdot v=0.
+\end{align*}
+Ou seja $\|T(\alpha v)-\alpha T(v)\|=0$ que implica que $T(\alpha v)-\alpha T(v)=0$ e que 
+$T(\alpha v)=\alpha T(v)$.  
 
+Provaremos agora, para todo $u,v\in\R^n$, que $T(u+v)=T(u)+T(v)$. Usamos um argumento similar e calculamos que 
+\begin{align*}
+    \|T(u+v)-T(u)-T(v)\|^2&=(T(u+v)-T(u)-T(v))\cdot (T(u+v)-T(u)-T(v))\\&=
+    T(u+v)\cdot T(u+v)+T(u)\cdot T(u)+T(v)\cdot T(v)\\&-2T(u+v)\cdot T(u)-2T(u+v)\cdot T(v)-2T(u)\cdot T(v)\\&=
+    (u+v)\cdot (u+v)+v\cdot v+u\cdot u\\&-2(u+v)\cdot u-2(u+v)\cdot v-2u\cdot v
+    \\&=((u+v)-u-v)\cdot((u+v)-u-v)=0\cdot 0=0.
+\end{align*}
+Logo $T(u+v)-T(u)-T(v)=0$; ou seja, $T(u+v)=T(u)+T(v)$.
+\end{proof}
 
+\begin{corollary}
+    Assuma que $T:\R^n=\R^n$ é uma isometria. Então $T=T_t\circ X$ onde $T$ é uma translação e 
+    $X:\R^n\to \R^n$ é ortogonal (em particular, $X$ é linear). 
+\end{corollary}
+\begin{proof}
+    Assuma que $T(0)=t$. Então $X=T_{-t}\circ T$ é uma isometria tal que $X(0)=0$. Pelo corolário anterior,
+    $X:\R^n\to \R^n$ é ortogonal (e linear). Ora notamos que $T=T_{t}\circ X$.
+\end{proof}
 
-
+\begin{corollary}
+    Qualquer isometria $T:\R^n\to\R^n$ é invertível. 
+\end{corollary}
 
 \end{document}
