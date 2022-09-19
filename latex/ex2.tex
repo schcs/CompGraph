@@ -1,0 +1,95 @@
+\documentclass{amsart}
+
+
+\usepackage{verbatim}
+\usepackage{amssymb}
+
+\usepackage[brazilian]{babel}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+
+\newcommand{\sym}[1]{{\mathsf S}_{#1}}
+\newcommand{\alt}[1]{{\mathsf A}_{#1}}
+\newcommand{\SL}[2]{{\sf SL}(#1,#2)}
+\newcommand{\GL}[2]{{\sf GL}(#1,#2)}
+\newcommand{\N}{\mathbb N}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\nullvec}{\overline 0}
+
+\newcommand{\mat}[2]{{\mathsf M}_{#1,#2}}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+\parskip 5pt
+\parindent 0pt
+
+\begin{document}
+
+
+\begin{center}
+\large Geometria com aplicações na gráfica computacional\\
+{\bf\large Folha 2 de exercícios}\\
+csaba@mat.ufmg.br
+\end{center}
+
+
+\bigskip
+
+{\bf 1.} Seja $V$ um espaço vetorial de dimensão finita, seja $\mathcal T(V)$ o grupo de translações de $V$, seja $\mbox{GL}(V)$ o grupo de transformações lineares invertíveis de $V$ e seja $\mbox{End}(V)$ o conjunto de transformações lineares (não necessariamente invertíveis) de $V$.  
+\begin{enumerate}
+    \item Mostre que $\mathcal T(V)\mbox{GL}(V)=\mbox{GL}(V)\mathcal T(V)$.
+    \item Mostre que $\mathcal T(V)\mbox{End}(V)\neq \mbox{End}(V)\mathcal T(V)$.
+\end{enumerate}
+[Dica: Na parte~(2), considere a translação $T$ por $(1,1)$ e a projeção $P:(x,y)\mapsto (0,y)$
+sobre $\R^2$. Mostre que 
+$P\circ T$ não pode ser escrito na forma $T'\circ X$ com $T'\in \mathcal T(V)$ e $X\in\mbox{End}(V)$.]
+
+\medskip
+
+{\bf 2.} Seja $X$ um elemento de $\mbox{AGL}(\R^2)=\mathcal T(\R^2)\mbox{GL}(\R^2)$ tal que 
+\[
+    X(0)=(2,3),\quad X(1,0)=(-3,3),\quad X(0,1)=(-4,2).
+\]
+Escreva $X$ na forma $T_{t_1}Y$ e também na forma $ZT_{t_2}$ onde $Y,Z\in\mbox{GL}(\R^2)$ e 
+$T_{t_1},T_{t_2}\in\mathcal T(\R^2)$. Qual é a relação entre $T_{t_1}$ e $T_{t_2}$ e entre $Y$ e $Z$.
+
+    \medskip
+
+{\bf 3.} Seja $R_\alpha:\R^2\to\R^2$ uma rotação em $\R^2$ pelo ângulo 
+$\alpha$ ao redor da origem. Calcule os autovalores complexos $R_\alpha$
+e os autovetores correspondentes.
+
+\medskip
+
+
+{\bf 4.} Seja $T:\R^n\to\R^n$ uma transformação ortogonal e seja $\alpha\in\C$ um autovalor de $T$. 
+\begin{enumerate}
+    \item Mostre que $\det T\in\{1,-1\}$.
+    \item Mostre que $|\alpha|=1$.
+    \item Deduza que se $\alpha\in\R$, então $\alpha\in\{1,-1\}$. 
+    \item Mostre que o conjugado complexo $\bar \alpha$ é também um autovalor de $T$.
+    \item Deduza que se $n$ for impar, então $\det T$ é autovalor de $T$. 
+\end{enumerate}
+
+\medskip
+
+{\bf 5.} Seja $T_{(1,1)}:\R^2\to \R^2$ a translação pelo vetor $(1,1)$ e $R_\alpha:\R^2\to\R^2$ a rotação por um ângulo $\alpha$ ao redor da origem. Como pode caraterizar a transformação $TR_\alpha T^{-1}$?
+
+\medskip
+
+
+{\bf 6.} Seja $X$ a reflexão de $\R^2$ em torno da reta com equação $x-y+1=0$. Escreva $X$ na forma 
+$T_{t_1}Y$ e também na forma $ZT_{t_2}$ onde $Y,Z\in\mbox{GL}(V)$ e $T_{t_1},T_{t_2}\in\mathcal T(\R^2)$. 
+\end{document}
+

@@ -1,0 +1,168 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+%\usepackage{tikz-cd}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\renewcommand{\r}{\mathfrak r}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\R}{\mathbb R}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+\newcommand{\spec}[1]{\mbox{Spec}(#1)}
+\newcommand{\len}{\mbox{len}\,}
+\newcommand{\id}{\mbox{id}\,}
+\DeclareMathOperator{\sen}{\text{sen}}
+%\newcommand{\sen}{\mbox{sen}\,}
+\newcommand{\gl}[1]{\mbox{GL}_{#1}}
+\newcommand{\SL}[1]{\mbox{SL}_{#1}}
+\newcommand{\glv}[1]{\mbox{GL}(#1)}
+\newcommand{\slv}[1]{\mbox{SL}(#1)}
+\newcommand{\Sym}{\mbox{Sym}}
+\usepackage[portuguese]{babel}
+\newcommand{\rot}[1]{{\textrm{Rot}}_{#1}}
+\newcommand{\refl}[1]{{\textrm{Ref}}_{#1}}
+
+
+
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{corollary}[theorem]{Corolário}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{exercise}[theorem]{Exercício}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Exemplo}
+\newtheorem{definition}[theorem]{Definição}
+
+
+
+
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+
+\title[Isometrias do espaço]{Transformações ortogonais em 2D e 3D}
+\maketitle
+
+
+\section{O plano (2D)}
+
+\subsection{Realização matricial}
+Lembre que a matriz da reflexão $R_t$ pelo eixo que tem ângulo $\alpha$ pelo eixo $x$ é
+\[ 
+\begin{pmatrix}\cos(2\alpha) & \sen(2\alpha) \\ \sen(2\alpha) & -\cos(2\alpha).
+\end{pmatrix}
+\]
+
+Seja $T:\R^2\to\R^2$ uma transformação ortogonal e seja $e_1,e_2$ a base canônica. 
+A matriz de $T$ tem os vetores $f_1=T(e_1)$ e $f_2=T(e_2)$ nas colunas. Pela ortogonalidade de 
+$T$, $f_1$ e $f_2$ formam uma base ortonormal de $\R^2$. Assuma que $f_1=(a,b)$ com $\|f_1\|=a^2+b^2=1$. Então 
+$f_2=(-b,a)$ ou $b_2=(b,-a)$.  Escolha um ângulo $\alpha$ tal  que $a=\cos\alpha$ e $b=\sen\alpha$. 
+Então a matriz $[T]$ de $T$ tem duas possíveis formas:
+\[ 
+    \mbox{Caso I:}\ [T]=\begin{pmatrix}\cos \alpha & -\sen \alpha\\\sen\alpha &\cos\alpha\end{pmatrix}\\
+    \qquad
+    \mbox{Caso II:}\ [T]=\begin{pmatrix}\cos \alpha & \sen \alpha\\\sen\alpha &-\cos\alpha\end{pmatrix}.
+\]
+
+Seja 
+
+\begin{lemma}
+    No primeiro caso $T$ é a rotação $\rot\alpha$ pelo ângulo $\alpha$. No segundo caso, $T$ é a 
+    reflexão $\refl{\alpha/2}$ pelo eixo que 
+    tem ângulo $\alpha/2$ com o eixo $x$. 
+\end{lemma}
+
+\begin{lemma}
+    Temos as seguintes regras para a composição de rotações e reflexões.
+    \begin{enumerate}
+        \item $\rot{\alpha}\circ\rot{\beta}=\rot{\alpha+\beta}$;
+        \item $\refl{\alpha}\circ\refl{\beta}=\rot{2(\alpha-\beta)}$;
+        \item $\rot{\alpha}\circ\refl{\beta}=\refl{\beta+\alpha/2}$;
+        \item $\refl{\alpha}\circ\rot{\beta}=\refl{\alpha-\beta/2}$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    (1) é exercício. Demonstremos (2). Seja $v\in\R^2$ e calculemos que 
+    \begin{align*}
+        &\refl{\alpha}\circ\refl{\beta}(v)=\begin{pmatrix}\cos(2\alpha) & \sen (2\alpha)\\\sen (2\alpha) &-\cos (2\alpha)\end{pmatrix}\cdot \begin{pmatrix}\cos (2\beta) & \sen (2\beta)\\\sen(2\beta) &-\cos(2\beta)\end{pmatrix}v\\
+        &=\begin{pmatrix}
+            \cos(2\alpha)\cos(2\beta)+\sen(2\alpha)\sen(2\beta) & \cos(2\alpha)\sen(2\beta)-\sen(2\alpha)\cos(2\beta)\\
+            \sen(2\alpha)\cos(2\beta)-\cos(2\alpha)\sen(2\beta) & 
+            \sen(2\alpha)\sen(2\beta)+\cos(2\alpha)\cos(2\beta)
+        \end{pmatrix}v\\
+        &=\begin{pmatrix} \cos(2(\alpha-\beta)) &  -\sen(2(\alpha-\beta))\\
+            \sen(2(\alpha-\beta)) & \cos(2(\alpha-\beta)) 
+        \end{pmatrix} v \\
+        &=\rot{2(\alpha-\beta)}(v)
+    \end{align*}
+    
+    (3) Temos que 
+    \[
+        \refl{\beta+\alpha/2}\circ(\refl{\beta})^{-1}=\refl{\beta+\alpha/2}\circ(\refl{\beta})=\rot{2(\beta-\alpha-\beta)}=\rot{\alpha}
+    \]
+    que implica afirmação (3). A demonstração de (4) é similar à demonstração de (3).
+\end{proof}
+
+\subsection{Realização com números complexos}
+
+O vetor $(\alpha,\beta)\in\R^2$ pode ser identificado com o número complexo $\alpha+i\beta$. 
+Cada número complexo $z$ pode ser escrito como $z=\|z\|(\cos \alpha+\sen\alpha)$ onde $\alpha$ é o ângulo 
+(frequentamente chamado de argumento) que corresponde a $z$ e $\alpha\in[0,2\pi)$. Um número complexo 
+$z$ com $\|z\|=1$ tem a forma $z=\cos\alpha+\sen\alpha$. Pela fórmula de Euler, 
+\[
+    \cos\alpha+i\sen\alpha = e^{i\alpha}=\exp(i\alpha)
+\]
+
+O conjugado de um número $z=\alpha+\beta i$ é $\bar z=\alpha-\beta i$. 
+
+\begin{lemma}
+    (1) Seja $z_\alpha=\cos\alpha+i\sen\alpha$. A aplicação 
+    \[
+        T:\C\to\C,\quad T(z)=z_\alpha\cdot z
+    \] 
+corresponde a rotação $\rot\alpha$ pelo ângulo $\alpha$ (em torno da origem). 
+
+(2) Seja $T$ a reflexão pelo eixo que tem ângulo $\alpha$ com o eixo $x$. Então 
+\[
+    T(z)=z_{2\alpha}\cdot \bar z
+\]
+ \end{lemma}
+ \begin{proof}
+(1) Seja $z=\|z\|(\cos\beta+\sen\beta)$. Então 
+\begin{align*}
+    z_\alpha\cdot z&=\|z\|(\cos\alpha+\sen\alpha)(\cos\beta+\sen\beta)\\&=
+    \cos\alpha\cos\beta-\cos\alpha\cos\beta+i(\cos\alpha\sen\beta+\sen\alpha\cos\beta)\\&=
+    \|z\|(\cos(\alpha+\beta)+i(\cos\alpha+\beta)).
+\end{align*}
+ 
+(2) Claramente $\refl 0(z)=\bar z$. Então 
+\[
+    T(z)=z_{2\alpha}\cdot \bar z=\rot{2\alpha}\refl 0(z)=\refl{\alpha}(z).
+\]
+ \end{proof}
+
+\end{document}
