@@ -25,7 +25,7 @@
 \newcommand{\spec}[1]{\mbox{Spec}(#1)}
 \newcommand{\len}{\mbox{len}\,}
 \newcommand{\id}{\mbox{id}\,}
-\DeclareMathOperator{\sen}{\text{sen}}
+\DeclareMathOperator{\sen}{\textrm{\rm sen}}
 %\newcommand{\sen}{\mbox{sen}\,}
 \newcommand{\gl}[1]{\mbox{GL}_{#1}}
 \newcommand{\SL}[1]{\mbox{SL}_{#1}}
@@ -127,6 +127,35 @@ Seja
     que implica afirmação (3). A demonstração de (4) é similar à demonstração de (3).
 \end{proof}
 
+\begin{example}
+    Seja $\alpha\in[0,2\pi)$ e considere $\rot \alpha:\R^2\to\R^2$ a rotação por ângulo $\alpha$ ao redor 
+    da origem. Os autovalores de $\rot\alpha$ são raízes do polinômio caraterístico
+    \begin{align*}
+        \det(t\cdot\id-\rot\alpha)&=\det\begin{pmatrix} t-\cos \alpha & \sen\alpha \\ -\sen\alpha &t-\cos\alpha
+        \end{pmatrix}\\&=(t-\cos \alpha)^2+\sen^2\alpha=t^2-2t\cos\alpha +\sen^2\alpha\\&=
+        t^2-2t\cos\alpha+1.
+    \end{align*}
+    As raízes deste polinômio são $z=\cos\alpha+i\sen\alpha$ e $\bar z=\cos\alpha-i\sen\alpha$.
+    Isso quer dizer que o ângulo da rotação pode ser determinado pelos autovalores da transformação. Mais 
+    precisamente o ãngulo da rotação é $\alpha$ onde $\cos\alpha = (z+\bar z)/2$ e 
+    $\sen\alpha=(z-\bar z)/(2i)$. 
+ \end{example}
+
+ \begin{theorem}\label{th:recog}
+    Seja $T:\R^2\to\R^2$ uma transformação ortogonal com dois autovalores $z,\bar z$ onde $z\in\C$ e $\|z\|=1$. 
+    Então $T$ é uma rotação por ângulo $\alpha$  onde $\cos\alpha=(z+\bar z)/2$ e $\sen\alpha=(z-\bar z)/(2i)$. 
+ \end{theorem}
+ \begin{proof}
+    Note que $\det T=z\bar z=1$ e pelas considerações anteriores, $T$ é uma rotação. Logo, a matriz de $T$ 
+    está na forma 
+    \[
+        \begin{pmatrix}\cos\alpha &-\sen\alpha \\ \sen\alpha & \cos \alpha\end{pmatrix}.
+    \] 
+    Usando a computação no exemplo anterior, os autovalores $z$ e  $\bar z$ são 
+    $\cos\alpha+i\sen\alpha$ e $\cos\alpha-i\sen\alpha$ e segue a afirmação.
+ \end{proof}
+
+
 \subsection{Realização com números complexos}
 
 O vetor $(\alpha,\beta)\in\R^2$ pode ser identificado com o número complexo $\alpha+i\beta$. 
@@ -164,5 +193,108 @@ corresponde a rotação $\rot\alpha$ pelo ângulo $\alpha$ (em torno da origem).
     T(z)=z_{2\alpha}\cdot \bar z=\rot{2\alpha}\refl 0(z)=\refl{\alpha}(z).
 \]
  \end{proof}
+
+ \subsection{Os grupos $O(\R^2)=O_2$ e $SO(\R^2)=SO_2$}
+ Considere o circulo 
+ \[
+S^1=\{z\in\C\mid \|z\|=1\}=\{\exp(i\alpha)\mid \alpha\in[0,2\pi)\}.
+\]
+Temos que $S^1$ é um grupo para a operação de multiplicação. Considere a aplicação
+\[
+    \psi: S^1\to SO(\R^2),\quad \exp(i\alpha)\mapsto \rot\alpha.
+\]
+\begin{theorem}
+    Temos que $\psi$ é uma aplicação invertível e 
+    \[
+        \psi(z_1\cdot z_2)=\psi(z_1)\circ \psi(z_2).
+    \]
+    Ou seja, $\psi$ é um isomorfismo entre os grupos $S^1$ e $SO_3$.
+\end{theorem}
+\begin{proof}
+    Se $\psi(\exp(i\alpha))=\psi(i\beta)$ então $\rot\alpha=\rot\beta$ e, como $\alpha\in[0,2\pi)$, 
+    $\alpha=\beta$.  Logo $\psi$ é injetivo. Claramente, $\rot\alpha=\psi(\exp(i\alpha))$ e assim 
+    $\psi$ é sobrejetivo.  Agora, 
+    \begin{align*}
+        \psi(\exp(i\alpha)\exp(i\beta))&=\psi(\exp(i(\alpha+\beta)))=\rot{\alpha+\beta}=\rot\alpha\circ
+        \rot\beta\\&=\psi(\exp(i\alpha))\circ\psi(\exp(i\beta))
+    \end{align*}
+\end{proof}
+
+Note que o grupo $SO_3$ pode ser identificado também com o grupo $[0,2\pi)$ com a operação de adição feita 
+"módulo $2\pi$".
+ 
+\begin{lemma}
+    Seja $T\in O_2$ uma reflexão. Então $O_2=SO_2\cup tSO_2$. Além disso qualquer 
+    rotação pode ser escrita como uma composição de duas reflexões.
+\end{lemma}
+\begin{proof}
+    Exercício.
+\end{proof}
+
+\section{O espaço 3D}
+
+\begin{exercise}
+    Seja $T:\R^n\to \R^n$ uma transformação ortogonal e $\lambda\in\C$ um autovalor de $T$. Mostre que 
+    $|\lambda|=1$. Mostre que se $v_1$ é um autovetor de $T$ com autovalor $1$ e $u$ é um autovetor 
+    de $T$ com autovalor $-1$, então $u$ e $v$ são ortogonais ($u\cdot v=0$). 
+\end{exercise}
+
+Seja $T:\R^3\to\R^3$ uma transformação ortogonal. Nós já vimos que $\det T=\pm 1$.
+A transformação $T$ possui três autovalores (possívelmente complexos) não necessáriamente distintos. 
+Além disso, se $z\in\C$ é um autovalor de $T$, então $\|z\|=1$ e $\bar z\in\C$ é também um autovalor de $T$. 
+As possibilidades para os autovalores são os seguintes.
+\begin{align*}
+    \mbox{Caso I}:&1,1,1;\\
+    \mbox{Caso II}:&1,1,-1;\\
+    \mbox{Caso III}:&1,-1,-1;\\
+    \mbox{Caso IV}:&1,z,\bar z\mbox{ com algum $z\in\C\setminus\R$};\\
+    \mbox{Caso V}:&-1,-1,-1;\\
+    \mbox{Caso VI}:&-1,z,\bar z\mbox{ com algum $z\in\C\setminus\R$}.
+\end{align*}
+
+\begin{exercise}
+    Dê exemplos de transformações de todos os tipos.
+\end{exercise}
+
+\subsection{Rotações em 3D}
+
+\begin{theorem}
+    Seja $T:\R^3\to\R^3$ transformação ortogonal com $\det T=1$. 
+    Então existe uma base $v_1,v_2,v_3$ ortonormal de $\R^3$ na qual a matriz de $T$ está na forma 
+    \[
+        [T]=\begin{pmatrix} 1 & 0 & 0\\ 0 & \cos\alpha & -\sen\alpha \\ 0 & 
+            \sen\alpha & \cos\alpha\end{pmatrix}
+    \]
+    Logo, a transformação $T$ é a rotação por ângulo $\alpha$ pelo eixo $v_1$.
+\end{theorem}
+\begin{proof}
+    Se os autovalores são $1,1,1$, então a transformação é a identidade e podemos tomar a base canônica e $\alpha=0$. Se os autovalores são $1,-1,-1$ então toma uma base ortonormal de $\R^n$ formada por autovetores e $\alpha=\pi$. 
+
+    Agora assuma que os autovetores de $T$ são $1,z,\bar z$ com algum $z\in\C\setminus\R$.  
+    Seja $v_1$ um autovetor de $T$ com autovalor $1$ (ou seja $T(v_1)=v_1)$. Como $T$ preserva o subespaço 
+    $\left<v_1\right>$, $T$ preserva também o subespaço $U=\left<v_1\right>^\perp$. Note que $\dim U=2$ e 
+    seja $v_2,v_3$ uma base ortonormal
+    de $U$. Então $v_1,v_2,v_3$ é uma base ortonormal de $\R^3$. 
+    Seja $T_1$ a restrição de $T$ para $U$. Emtão $T_1$ preserva o produto escalar em 
+    $U$ e assim induz uma transformação ortogonal em $U$ com autovalores $z$ e $\bar z$. Pelo 
+    Teorema~\ref{th:recog}, $T_1$ é uma rotação com um ângulo $\alpha$ determinado por $z$ e $\bar z$. 
+    A matriz de $T$ na base $v_1,v_2,v_3$ é na forma desejada, e $T$ é a rotação por ângulo $\alpha$ pelo eixo $v_1$.
+\end{proof}
+
+
+Uma transformação ortogonal $T:\R^3\to\R^3$ com determinante $1$ é uma rotação. Pelas 
+considerações anteriores, as possíveis autovetores de uma rotação são $1,1,1$ ou  
+$1,-1,-1$, ou $1,z,\bar z$ onde 
+$z\in\C\setminus\R$ com $\|z\|=1$.
+
+Temos em particular as rotações $\rot{\alpha}^x$, $\rot\beta^y$ e $\rot\gamma^z$ 
+por ãngulos $\alpha$, $\beta$ e $\gamma$ em torno dos eixos $x$, $y$, e $z$ respetivamente.
+As matrizes destas rotações na base canônica são 
+\begin{align*}
+    [\rot\alpha^x]&=\begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\alpha & -\sen\alpha \\ 0 & \sen\alpha & \cos\alpha
+    \end{pmatrix}\\
+    [\rot\beta^y]&=\begin{pmatrix} \cos\beta & 0 & \sen\beta \\ 0 & 1 & 0 \\  -\sen\beta & 0 & \cos\beta\end{pmatrix}\\
+    [\rot\beta^y]&=\begin{pmatrix} \cos\gamma & -\sen\gamma  & 0 \\ \sen\gamma & \cos\gamma & 0 \\ 0 & 0 & 1\end{pmatrix}
+\end{align*}
 
 \end{document}
