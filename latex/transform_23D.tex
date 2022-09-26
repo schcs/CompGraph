@@ -275,7 +275,7 @@ As possibilidades para os autovalores são os seguintes.
     $\left<v_1\right>$, $T$ preserva também o subespaço $U=\left<v_1\right>^\perp$. Note que $\dim U=2$ e 
     seja $v_2,v_3$ uma base ortonormal
     de $U$. Então $v_1,v_2,v_3$ é uma base ortonormal de $\R^3$. 
-    Seja $T_1$ a restrição de $T$ para $U$. Emtão $T_1$ preserva o produto escalar em 
+    Seja $T_1$ a restrição de $T$ para $U$. Então $T_1$ preserva o produto escalar em 
     $U$ e assim induz uma transformação ortogonal em $U$ com autovalores $z$ e $\bar z$. Pelo 
     Teorema~\ref{th:recog}, $T_1$ é uma rotação com um ângulo $\alpha$ determinado por $z$ e $\bar z$. 
     A matriz de $T$ na base $v_1,v_2,v_3$ é na forma desejada, e $T$ é a rotação por ângulo $\alpha$ pelo eixo $v_1$.
@@ -297,4 +297,97 @@ As matrizes destas rotações na base canônica são
     [\rot\beta^y]&=\begin{pmatrix} \cos\gamma & -\sen\gamma  & 0 \\ \sen\gamma & \cos\gamma & 0 \\ 0 & 0 & 1\end{pmatrix}
 \end{align*}
 
+\subsection{A fórmula de Rodrigues}
+Seja $k\in\R^3$ um vetor unitário e $\vartheta\in[0,2\pi)$. Considere 
+a rotação $R=R(k,\vartheta):\R^3\to\R^3$ pelo ângulo $\vartheta$ ao redor do eixo $k=(k_x,k_y,k_z)$. Seja 
+\[ 
+    K=\begin{pmatrix} 0 & -k_z & k_y \\ k_z & 0 & -k_x \\ -k_y & k_x & 0\end{pmatrix}.
+\]
+\begin{lemma}
+    Seja $v\in\R^3$. Então $k\times v=Kv$. Em particular, $Kk=0$.
+\end{lemma}
+\begin{proof}
+    Temos que 
+    \begin{align*}
+        k\times v&=\det\begin{pmatrix} i & j & k \\ k_x & k_y & k_z \\ v_x & v_y & v_z \end{pmatrix}
+            =(k_yv_z-k_zv_y,-k_xv_z+k_zv_x,k_xv_y-k_yv_x)\\
+            &=\begin{pmatrix} 0 & -k_z & k_y \\ k_z & 0 & -k_x \\ -k_y & k_x & 0\end{pmatrix}\begin{pmatrix} v_x \\ v_y \\ v_z\end{pmatrix}.
+    \end{align*}
+Ora, $Kk=k\times k=0$.
+\end{proof}
+
+
+\begin{lemma}
+    A matriz da rotação $R=R(k,\vartheta)$ na base canônica é 
+    \[
+        [R]=I+(\sen\vartheta)K+(1-\cos\vartheta)K^2=I+(\sen\vartheta)K+(1-\cos\vartheta)k^tk
+    \]
+\end{lemma}
+\begin{proof}
+    Escolha uma base ortonormal de $\R^3$ na forma $k,u,v$ em tal forma que
+    $k\times u = v$, $u\times v=k$ e $v\times k=u$ e 
+    seja $X=I+(\sen\vartheta)K+(1-\cos\vartheta)K^2$. Como $Kk=K^2k=0$, temos que
+    \[
+        Xk=(I+(\sen\vartheta) K+(1-\cos\vartheta)K^2)k=Ik=k.
+    \]
+    Agora 
+    \begin{align*}
+        Xu&=(I+(\sen\vartheta) K+(1-\cos\vartheta)K^2)u=u+(\sen\vartheta) v-(1-\cos\vartheta)u\\&=
+        (\cos\vartheta) u +(\sen\vartheta) v
+    \end{align*}
+    e
+    \begin{align*}
+        Xv&=(I+(\sen\vartheta) K+(1-\cos\vartheta)K^2)v=v-(\sen\vartheta)u-(1-\cos\vartheta)v\\&=
+        -(\sen\vartheta)u +(\cos\vartheta)v
+    \end{align*}
+Logo a matriz de $R$ na base $k,u,v$ é 
+\[
+    \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\vartheta & -\sen\vartheta \\ 0 & \sen\vartheta & \cos\vartheta
+    \end{pmatrix}.
+\]    
+Portanto $[R]=X$. 
+Para provar a segunda igualdade do lema, note que 
+$\|k\|=k_x^2+k_y^2+k_z^2=1$ e assim
+\begin{align*}
+    K^2&=\begin{pmatrix} 0 & -k_z & k_y \\ k_z & 0 & -k_x \\ -k_y & k_x & 0\end{pmatrix}\cdot \begin{pmatrix} 0 & -k_z & k_y \\ k_z & 0 & -k_x \\ -k_y & k_x & 0\end{pmatrix}\\
+    &=\begin{pmatrix} -k_z^2-k_y^2 & k_yk_x & k_zk_x \\
+            k_xk_y & -k_z^2-k_x^2 & k_zk_y\\
+            k_xk_z & k_yk_z & -k_y^2-k_x^2
+    \end{pmatrix}
+    =k^t\cdot k-I
+\end{align*}
+Logo a matriz de $R$ é 
+\begin{align*}
+    X&=I+(\sen\vartheta) K+(1-\cos)K^2=I+(\sen\vartheta) K+(1-\cos\vartheta)(k^t\cdot k-I)
+    \\&=
+    (\cos\vartheta) I+(\sen\vartheta) K+(1-\cos\vartheta)k^t\cdot k\\
+\end{align*}
+\end{proof}
+
+\begin{corollary}
+    A matriz de $R(k,\vartheta)$ é 
+    \[
+        \begin{pmatrix}
+            (1-\cos\vartheta)k_x^2+\cos\vartheta & (1-\cos\vartheta)k_xk_y-k_z\sen\vartheta  & 
+            (1-\cos\vartheta)k_xk_z+k_y\sen\vartheta \\
+            (1-\cos\vartheta)k_xk_y+k_z\sen\vartheta  & (1-\cos\vartheta)k_y^2+\cos\vartheta  & 
+            (1-\cos\vartheta)k_yk_z-k_x\sen\vartheta \\
+            (1-\cos\vartheta)k_xk_z-k_y\sen\vartheta & (1-\cos\vartheta)k_yk_z+k_x\sen\vartheta  & 
+            (1-\cos\vartheta)k_z^2+\cos\vartheta
+        \end{pmatrix}.
+    \]
+\end{corollary}
+\begin{proof} Apenas escreva a matriz $(\cos\vartheta) I+(\sen\vartheta) K+(1-\cos\vartheta)k^t\cdot k$.
+\end{proof}
+
+\begin{corollary}
+    Dada a matriz $X$ da rotação $R(k,\vartheta):\R^3\to\R^3$. Temos que
+    \begin{align*}
+        \vartheta&=\arccos\frac{X_{11}+X_{22}+X_{33}-1}2\\
+        k_x&=\frac{X_{32}-X_{23}}{2\sen\vartheta};\\
+        k_y&=\frac{X_{13}-X_{31}}{2\sen\vartheta};\\
+        k_z&=\frac{X_{21}-X_{12}}{2\sen\vartheta}.
+    \end{align*}
+\end{corollary}
 \end{document}
+ 
