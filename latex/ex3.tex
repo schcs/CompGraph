@@ -1,0 +1,103 @@
+\documentclass{amsart}
+
+
+\usepackage{verbatim}
+\usepackage{amssymb}
+
+\usepackage[brazilian]{babel}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+
+\newcommand{\sym}[1]{{\mathsf S}_{#1}}
+\newcommand{\alt}[1]{{\mathsf A}_{#1}}
+\newcommand{\SL}[2]{{\sf SL}(#1,#2)}
+\newcommand{\GL}[2]{{\sf GL}(#1,#2)}
+\newcommand{\N}{\mathbb N}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\nullvec}{\overline 0}
+
+\newcommand{\mat}[2]{{\mathsf M}_{#1,#2}}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+\parskip 5pt
+\parindent 0pt
+
+\begin{document}
+
+
+\begin{center}
+\large Geometria com aplicações na gráfica computacional\\
+{\bf\large Folha 3 de exercícios}\\
+csaba@mat.ufmg.br
+\end{center}
+
+
+\bigskip
+
+{\bf 1.} Descreva as possibilidades dos autovalores das transformações ortogonais $T:\R^4\to\R^4$. 
+Dê exemplos com justificativas para todos os casos.
+
+\medskip
+
+{\bf 2.} Seja $X$ uma matriz $3\times 3$ representando uma reflexão de $\R^3$ em relação a um plano
+$\Pi$
+que passa pela origem. Seja $k=[k_x,k_y,k_z]$ um vetor normal unitário do plano.  Escreva 
+as coordenadas $k_x,k_y,k_z$ em termos das entradas de $X$.
+
+    \medskip
+
+{\bf 3.} Seja $k\in\R^3$ um vetor unitário e seja $K$ a matriz da transformação linear 
+$\R^3\to\R^3$ definido como $v\mapsto k\times v$. Mostre que a exponential 
+\[
+    \exp(\vartheta K)=\sum_{i=0}^\infty \frac{(\vartheta K)^i}{i!}
+\]
+é igual à matriz da rotação por ângulo $\vartheta$ no redor do eixo $k$.
+\medskip
+
+
+{\bf 4.} Uma transformação linear $T:\R^2\to\R^2$ chama-se \emph{cisalhamento} se a sua matriz na base canônica  está na forma 
+\[
+    \begin{pmatrix} 1 & \alpha \\ 0 & 1\end{pmatrix} \quad\mbox{ou}\quad 
+    \begin{pmatrix} 1 & 0 \\ \alpha & 1\end{pmatrix}
+\]
+com algum $\alpha\in\R$. Uma transformação $T:\R^2\to\R^2$ chama-se escala se 
+a sua matriz na base canônica está na forma 
+\[
+    \begin{pmatrix} \alpha & 0 \\ 0 &\beta\end{pmatrix}
+\]
+com $\alpha,\beta\in\R\setminus\{0\}$. 
+\begin{enumerate}
+    \item Mostre que uma rotação $\R^2\to\R^2$ pode ser decomposta para uma composição de três 
+    cisalhamentos.
+    \item Mostre que uma rotação $\R^2\to\R^2$ pode ser decomposta para uma composição de duas 
+    cisalhamentos e uma escala.
+\end{enumerate}
+
+\medskip
+
+{\bf 5.} Sejam $T:\R^3\to\R^3$ uma transformação ortogonal com $\det T=-1$. Mostre que 
+\begin{enumerate}
+    \item $T$ é uma reflexão em relação a um plano que passa pela origem; ou 
+    \item $T$ é uma rotoreflexão (ou seja uma rotação por um eixo $k$ e ângulo $\vartheta$ 
+    seguida por uma reflexão 
+    em relação a um plano perpendicular a $k$).
+\end{enumerate}
+
+\medskip
+
+{\bf 6} Seja $X$ a matriz de uma rotoreflexão em $\R^3$. Escreva o eixo $k$ e o ângulo $\vartheta$ 
+em termos das entradas de $X$.
+\end{document}
+
