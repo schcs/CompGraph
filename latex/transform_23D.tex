@@ -389,5 +389,33 @@ Logo a matriz de $R$ é
         k_z&=\frac{X_{21}-X_{12}}{2\sen\vartheta}.
     \end{align*}
 \end{corollary}
+
+\subsection{A decomposição ZXZ}
+Dada uma rotação $R=R(k,\alpha)$, ela pode ser escrita como produto de rotações elementares.
+Uma decomposição comum é escrever $R$ na forma $R(z,\psi)R(y,\vartheta)R(x,\varphi)$.
+Escrevendo o produto matricial, obtemos que a matriz da composição $R(z,\psi)R(y,\vartheta)R(x,\varphi)$ 
+é 
+\[
+    \begin{pmatrix}
+    \cos\vartheta\cos\psi & -\cos\varphi\sen\psi+\sen\varphi\sen\vartheta\cos \psi & \sen\varphi\sen\psi+
+    \cos\varphi\sen\vartheta\cos\psi\\
+    \cos\vartheta\sen\psi & \cos\varphi\cos\psi+\sen\varphi\sen\vartheta\sen \psi & 
+    -\sen\varphi\cos\psi+
+    \cos\varphi\sen\vartheta\sen\psi\\
+    -\sen\vartheta & \sen\varphi\cos\vartheta & \cos\varphi\cos\vartheta 
+    \end{pmatrix}
+\]  
+Se temos a matriz $X_{i,j}$ de $R$, então os ãngulos $\varphi$, $\vartheta$, $\psi$ podem ser obtidos.
+
+\subsection{A decomposição ZXZ}
+Uma outra decomposição comum de $R$ é escrever $R$ na forma $R=R(z,\psi)R(x,\vartheta)R(z,\varphi)$. 
+Multiplicando as matrizes, obtemos que a matriz desta composição é 
+\[
+\begin{pmatrix} 
+    \cos\psi\cos\varphi - \sen\psi\cos\vartheta\sen\varphi & -\cos\psi\sen\varphi - \sen\psi\cos\vartheta\cos\varphi   &                \sen\psi\sen\vartheta\\
+\cos\psi\cos\vartheta\sen\varphi + \sen\psi\cos\varphi & \cos\psi\cos\vartheta\cos\varphi - \sen\psi\sen\varphi    &              -\cos\psi\sen\vartheta\\
+\sen\vartheta\sen\varphi &                  \sen\vartheta\cos\varphi      &                  \cos\vartheta
+\end{pmatrix}
+\]
 \end{document}
  
