@@ -174,7 +174,7 @@ Para $q_1,q_2\in\Ha$, defina o comutador
 
 
 As identidades no lema anterior implicam que a estrutura $(\Ha,+,[\cdot,\cdot])$ é uma \emph{álgebra de Lie}. 
-Seja $Q$ o espaço dos quatérnios puros. Então $Q$ é um espaço vetorial de dimensão 3 gerado por $i$, $j$, e $k$. Note que $Q$ não é fechado para o produto $\cdot$ entre os quatérnios, mas ele é fechado para o comutador. 
+Seja $Q$ o espaço dos quatérnios puros. Então $Q$ é um espaço vetorial de dimensão 3 gerado por $i$, $j$, e $k$. Note que $Q$ não é fechado para o produto $\cdot$ entre os quatérnios (por exemplo $i\cdot i=i^2=-1\not\in Q$), mas ele é fechado para o comutador. 
 De fato, temos que $[i,j]=k$, $[j,k]=i$ e $[k,i]=j$. Ou seja, o comutador no espaço $k$ comporta-se 
 exatamente como o produto vetorial $\times$ sobre $\R^3$. Além disso, $[1,q]=0$ para todo $q\in\Ha$.  
 
@@ -183,13 +183,14 @@ exatamente como o produto vetorial $\times$ sobre $\R^3$. Além disso, $[1,q]=0$
     As seguintes propriedades são válidas para $q=\alpha_q+v_q$ e $p=\alpha_p+v_p$:
     \begin{enumerate}
         \item $[p,q]=[v_p,v_q]$;
-        \item $p\cdot q=\alpha_p\alpha_q-(v_p,v_q)+\alpha_p v_q+\alpha_qv_p+v_p\times v_q$;
-        \item Se $p$ e $q$ são quatérnios puros, então $p\cdot q=-(p, q)+p\times q$.
+        \item $p\cdot q=\alpha_p\alpha_q-(v_p,v_q)+\alpha_p v_q+\alpha_qv_p+v_p\times v_q=\alpha_p\alpha_q-(v_p,v_q)+\alpha_p v_q+\alpha_qv_p+[p,q]$;
+        \item Se $p$ e $q$ são quatérnios puros, então $p\cdot q=-(p, q)+p\times q=-(p, q)+[p,q]$.
+        \item Se $p$ e $q$ são quatérnios puros ortogonais, então $p\cdot q=p\times q$.
         \item Se $p$ é puro unitário, então $p^2=-1$.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
-    (1)--(3) Uma conta usando as definições. Para provar (4), note que item~(3) implica que 
+    (1)--(4) Uma conta usando as definições. Para provar (5), note que item~(3) implica que 
     \[
         v^2=-(v, v)+v\times v=-(v, v)=-\|v\|^2=-1. 
     \]
@@ -200,26 +201,118 @@ Se $q=\alpha_q+v_q\in\Ha$ com $v_q\neq 0$, então
 \[
     q=\alpha_q+\|v_q\|\frac{v_q}{\|v_q\|}=\alpha_q+\beta_qu_q
 \]
-onde $u_q$ é um quatérnio puro unitário. Além disso, como $\alpha_q\perp v_q$,
+onde $u_q$ é um quatérnio puro unitário. Além disso, se $\|q\|=1$, como $\alpha_q\perp v_q$,
 \[
     1=\|q\|=\alpha_q^2+\beta_q^2
 \]
 então 
 \[
-    q=\cos\vartheta_q+\sin\vartheta_qu_q
+    q=\cos\vartheta_q+\sen\vartheta_qu_q
 \]
 com algum ângulo $\vartheta\in[0,2\pi)$.
 
 \begin{theorem}
     Todo quatérnio $q\in\Ha$ unitário pode ser escrito na forma 
     \[
-        \cos\vartheta +\sen\vartheta u
+        \cos\vartheta +(\sen\vartheta) u
     \]
     onde $u$ é um quatérnio puro unitário.
     Além disso, se $q\neq 1$, então esta expressão é única.
 \end{theorem}
 \begin{proof}
-    If $v_q\neq 0$, então siga o processo antes do enunciado. Se $v_q=0$, então toma $\vartheta=0$ e $u$ arbitrário.
+    If $v_q\neq 0$, então siga o processo antes do enunciado. Se $v_q=0$, então toma $\vartheta=0$ ou $\vartheta =\pi$ e $u$ arbitrário.
+\end{proof}
+
+\begin{lemma}
+    Seja $u\in\Ha$ um quatérnio unitário. Então as aplicações 
+    \[
+        L_u:\Ha\to\Ha,\ L_u(q)=uq\quad\mbox{e}\quad R_u:\Ha\to\Ha,\ R_u(q)=qu^{-1}=q\bar u
+    \]
+    são transformações ortogonais de $\Ha$ com determinante~$1$; ou seja, $L_u$ e $R_u$ são 
+    rotações de $\Ha\cong \R^4$. 
+\end{lemma}
+\begin{proof}
+    Pela distributividade da multiplicação, temos que $L_u$ e $R_u$ são transformações lineares. Além disso
+    \[
+        \|L_u(q)\|=\|uq\|=\|u\|\|q\|=\|q\|
+    \]
+    e obtém-se similarmente que $\|R_u(q)\|=\|q\|$; 
+    ou seja $L_u$ e $R_u$ preservam a norma. 
+    Nós já provamos que para uma transformação linear isso é equivalente 
+    a ser ortogonal. Precisamos ainda provar que $\det L_u=\det R_u=1$. Escreva 
+    $u=\cos\vartheta+\sen\vartheta u_0$ onde $u_0$ é quatérnio puro unitário. 
+    Neste caso $1\perp u_0$ e escolha um quatérnio puro unitário $v$ tal que 
+    $u_0\perp v$ e seja $w=[u_0,v]=u_0\times v$. Então temos que a matriz de $L_u$ na base $1,u_0,v,w$ é 
+    \[
+        [L_{u_0}]=\begin{pmatrix} 0 & -1 & 0 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & -1 \\ 0 & 0 & 1 & 0\end{pmatrix}
+    \]
+    e
+    a matriz de $L_u=(\cos\vartheta)I+(\sen\vartheta) L_{u_0}$ é 
+    \[
+        [L_u]=\begin{pmatrix} \cos\vartheta & -\sen\vartheta & 0 & 0 \\ \sen\vartheta & \cos\vartheta & 0 & 0 \\ 0 & 0 & \cos\vartheta & -\sen\vartheta \\ 0 & 0 & \sen\vartheta & \cos\vartheta\end{pmatrix}.
+    \]
+    Segue que $L_u$ pode ser realizada como a composição de duas rotações: a primeira 
+    no plano $\left<1,u\right>$ e a segunda no plano $\left<v,w\right>$ com ângulo $\vartheta$. 
+    Temos que $\det L_u=(\cos^2\vartheta+\sen^2\vartheta)^2=1$. A computação para $R_u$ é similar. 
+    Note que $u^{-1}=\bar u=\cos\vartheta-\sen\vartheta u_0$ e a matriz 
+    de $R_u$ na mesma base será 
+    \[
+        [R_u]=\begin{pmatrix} \cos\vartheta & \sen\vartheta & 0 & 0 \\ -\sen\vartheta & \cos\vartheta & 0 & 0 \\ 0 & 0 & \cos\vartheta & -\sen\vartheta \\ 0 & 0 & \sen\vartheta & \cos\vartheta\end{pmatrix}
+    \]
+ Ou seja, $R_u$ faz uma rotação no plano $\left<1,u\right>$ com ângulo $-\vartheta$ e uma rotação no plano 
+ $\left<v,w\right>$ por ângulo $\vartheta$.
+\end{proof}
+
+\begin{theorem}
+    Seja $u=\cos\vartheta+(\sen\vartheta)u_0\in\Ha$ um quatérnio unitário. Defina 
+    \[
+        T_u:\Ha\to \Ha,\quad T_u(q)=uqu^{-1}=(L_u\circ R_u)(q).
+    \]
+    Então $T_u(1)=1$ e $T_u$ induz uma rotação do espaço $\R^3\cong\left<i,j,k\right>$. O eixo desta rotação é 
+    $u_0$ e o seu ângulo é $2\vartheta$.
+\end{theorem}
+\begin{proof}
+    Primeiro
+    \[
+        T_u(1)=u\cdot 1\cdot u^{-1}=u\cdot u^{-1}=1.
+    \]
+    Além disso, $T_u$ é uma composição de duas transformações ortogonais, e ela é ortigonal e temos ainda que 
+    $\det T_u=\det L_u\cdot\det R_u=1$. Logo $T_u$ é uma rotação de $\Ha$. 
+    Consequentemente, $T_u$ preserva $Q=\left<i,j,k\right>=\left<1\right>^{\perp}$. 
+    Além disso, $T_u$ preserva a norma em $Q$ e assim a restrição de $T_u$ para $Q$ 
+    é uma transformação ortogonal com determinante $1$. Portanto $T_u$ induz uma rotação 
+    em $\left<i,j,k\right>$.  O eixo desta rotação pode ser 
+    calculado por determinar um autovetor de $T_u$ em $\left<i,j,k\right>$ 
+    que corresponde ao autovalor $1$. Mas note que 
+    \[
+        uu_0=(\cos\vartheta+(\sen\vartheta)u_0)u_0=u_0(\cos\vartheta+(\sen\vartheta)u_0)=
+        (\cos\vartheta) u_0-\sen\vartheta=u_0u
+    \]
+    e assim 
+    \[
+        T_u(u_0)=uu_0u^{-1}=u_0uu^{-1}=u_0
+    \]
+    e obtemos que o eixo de $T_u$ em $\left<i,j,k\right>$ é $u$.
+
+    Finalmente, temos que verificar a afirmação sobre o ângulo. Escreva $u=\cos\vartheta+(\sen\vartheta)u_0$
+    onde $u_0$ é puro e unitário. Como na demonstração anterior, considere a base $1,u_0,v,w$ onde 
+    $v\in Q$ unitário ortogonal a $u$ e $w=u\times v$. Como $T_u$ é a composição de $L_u$ e $R_u$, temos 
+    que a matriz de $T_u$ nesta base é o produto das matrizes de $L_u$ e $R_u$ e assim
+    \begin{align*}
+        [T_u]&=\begin{pmatrix} \cos\vartheta & -\sen\vartheta & 0 & 0 \\ \sen\vartheta & \cos\vartheta & 0 & 0 \\ 0 & 0 & \cos\vartheta & -\sen\vartheta \\ 0 & 0 & \sen\vartheta & \cos\vartheta\end{pmatrix}
+        \begin{pmatrix} \cos\vartheta & \sen\vartheta & 0 & 0 \\ -\sen\vartheta & \cos\vartheta & 0 & 0 \\ 0 & 0 & \cos\vartheta & -\sen\vartheta \\ 0 & 0 & \sen\vartheta & \cos\vartheta\end{pmatrix}\\
+        &=\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & \cos(2\vartheta) & -\sen(2\vartheta) \\ 0 & 0 & \sen(2\vartheta) & \cos(2\vartheta)\end{pmatrix}.
+    \end{align*}
+\end{proof}
+\begin{corollary}
+    Toda rotação $T$ de $R^3=\left<i,j,k\right>$ pode ser realizado como $T_u$ com algum $u\in\Ha$ unitário. 
+\end{corollary}
+\begin{proof}
+    Seja $u_0$ o eixo de $T$ e $\vartheta$ o ângulo da rotação. Toma 
+    \[
+        u=\cos(\vartheta/2)+(\sen(\vartheta/2))u_0.
+    \] 
+    Pelo teorema anterior, $T=T_{u}$.
 \end{proof}
 \end{document}
  
