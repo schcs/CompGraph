@@ -305,7 +305,8 @@ com algum ângulo $\vartheta\in[0,2\pi)$.
     \end{align*}
 \end{proof}
 \begin{corollary}
-    Toda rotação $T$ de $R^3=\left<i,j,k\right>$ pode ser realizado como $T_u$ com algum $u\in\Ha$ unitário. 
+    Toda rotação $T$ de $\R^3=\left<i,j,k\right>$ pode ser realizado como $T_u$ com algum $u\in\Ha$ unitário. 
+    Além disso, se $u,v\in\Ha$ são unitários, então $T_u=T_v$ se e somente se $u=\pm v$. 
 \end{corollary}
 \begin{proof}
     Seja $u_0$ o eixo de $T$ e $\vartheta$ o ângulo da rotação. Toma 
@@ -313,6 +314,84 @@ com algum ângulo $\vartheta\in[0,2\pi)$.
         u=\cos(\vartheta/2)+(\sen(\vartheta/2))u_0.
     \] 
     Pelo teorema anterior, $T=T_{u}$.
+
+    Para provar a segunda afirmação, primeiro provaremos que $T_u=\id$ se e somente se 
+    $u=\pm 1$. Primeiro, se $u=\pm 1$, então $T_u=\id$. Assuma que $T_u=\id$. 
+    Assuma que $u,v\in\Ha$ são unitários e escreva $u=\cos\alpha+\sen\alpha u_0$. 
+    O ângulo da rotação é $2\alpha$. Temos que $T_u=\id$ se e somente se $2\alpha$ 
+    é um múltiplo de $2\pi$, ou seja $\alpha=0$ ou $\alpha=\pi$. Obtemos nos dois casos
+    que $u=1$ ou $u=-1$. Assuma agora que $T_u=T_v$ com $u,v\in\Ha$ unitários. 
+    Temos que 
+    \[
+        \id =T_uT_v^{-1}=T_uT_{\bar v}=T_{u\bar v}.
+    \]
+    Pelo afirmação anterior, $u\bar v=\pm 1$ e assim $u=\pm v$. 
 \end{proof}
+
+\begin{corollary}
+    O grupo $SO(\R^3)$ das rotações de $\R^3$ pode ser identificado com a meia esfera $S^3\subseteq \R^4$. 
+    Dois elementos $u,v\in S^3$ representam a mesma rotação se e somente se $u=\pm v$. 
+\end{corollary}
+
+\subsection{A composição de rotações}
+Sejam $u=\cos\vartheta+(\sen\vartheta)u_0$ e $v=\cos\beta+(\sen\beta)v_0$ quatérnios unitários. 
+Note, para todo $x\in\Ha$ que 
+\[
+    T_{uv}(x)=uvx(uv)^{-1}=uvxv^{-1}u^{-1}=T_u\circ T_v(x).
+\] 
+Logo,
+\[
+    T_{uv}=T_u\circ T_v.
+\]
+Além disso, $uv$ é quatérnio unitário e  
+\begin{align*}
+    uv&=(\cos\vartheta+(\sen\vartheta)u_0)(\cos\beta+(\sen\beta)v_0)\\
+    &=\cos\vartheta\cos\beta+(\cos\vartheta\sen\beta) v_0+(\cos\beta\sen\vartheta) u_0+\sen\vartheta\sen\beta u_0 v_0\\
+    &=\cos\vartheta\cos\beta+(\cos\vartheta\sen\beta) v_0+(\cos\beta\sen\vartheta) u_0+\sen\vartheta\sen\beta(-(u_0,v_0)+u_0\times v_0)\\
+    &=\cos\vartheta\cos\beta -\sen\vartheta\sen\beta(u_0,v_0)+(\cos\vartheta\sen\beta) v_0+(\cos\beta\sen\vartheta) u_0+(\sen\vartheta\sen\beta) u_0\times w_0\\
+    &=\cos\vartheta\cos\beta -\sen\vartheta\sen\beta(u_0,v_0)+w
+\end{align*} 
+com $w$ puro
+(na útlima equação usamos que $u_0$, $v_0$ são puros e unitários).
+A parte constante de $uv$ é $\cos\vartheta\cos\beta-\sen\vartheta\sen\beta(u_0,v_0)$. Para escrever $uv$ na forma 
+$\cos\alpha+(\sen\alpha)w_0$, precisamos calcular $\|w\|$. Usando que $u_0$ e $v_0$ são ambos  
+ortogonais a $u_0\times v_0$, e que $u_0$, $v_0$ e $u_0\times v_0$ são unitários, obtemos que 
+\begin{align*}
+    \|w\|^2&=\|(\cos\vartheta\sen\beta) v_0+(\cos\beta\sen\vartheta) u_0+(\sen\vartheta\sen\beta)u_0\times v_0\|^2\\
+    &=((\cos\vartheta\sen\beta) v_0+(\cos\beta\sen\vartheta) u_0+(\sen\vartheta\sen\beta)u_0\times v_0,\\
+    &=(\cos\vartheta\sen\beta) v_0+(\cos\beta\sen\vartheta) u_0+(\sen\vartheta\sen\beta)u_0\times v_0)\\
+    &=\sen^2\vartheta\sen^2\beta\sen^2\varphi+\cos^2\vartheta\sen^2\beta+\cos^2\beta\sen^2\vartheta+
+    2\cos\vartheta\sen\beta\cos\beta\sen\vartheta\cos\varphi\\&=
+    \sen^2\vartheta\sen^2\beta\sen^2\varphi+(\cos\vartheta\sen\beta+\cos\beta\sen\vartheta)^2+2\cos\vartheta\sen\beta\cos\beta\sen\vartheta(\cos\varphi-1)\\
+    &=\sen^2\vartheta\sen^2\beta\sen^2\varphi+\sen^2(\vartheta+\beta)+\frac{\cos^2(\vartheta-\beta)-\cos^2(\vartheta+\beta)}{2}(\cos\varphi-1)\\
+\end{align*}
+Então temos que 
+\[
+    uv=w=\alpha_w+\beta_ww_0
+\]
+onde
+\begin{align*}
+    \alpha_w&= \cos\vartheta\cos\beta-\sen\vartheta\sen\beta(u_0,v_0)=\cos\vartheta\cos\beta-\sen\vartheta\sen\beta\cos\varphi\\
+    \beta_w&=\left(\sen^2\vartheta\sen^2\beta\sen^2\varphi+\sen^2(\vartheta+\beta)+\frac{\cos^2(\vartheta-\beta)-\cos^2(\vartheta+\beta)}{2}(\cos\varphi-1)\right)^{1/2}\\
+    w_0&=\frac{(\cos\vartheta\sen\beta) v_0+(\cos\beta\sen\vartheta) u_0+(\sen\vartheta\sen\beta)u_0\times v_0}{\beta_w}.
+\end{align*} 
+onde $w_0=w/\|w\|$ é um quatérnio unitário puro.
+
+\begin{theorem}
+    Sejam $R_1=R(k_1,\vartheta_1)$ e $R_2=R(k_2,\vartheta_2)$ rotações de $\R^3$ e assuma que 
+    $\|k_1\|=\|k_2\|=1$ e que $\varphi$ é o ângulo entre $k_1$ e $k_2$ (ou seja, $\cos\varphi=(k_1,k_2)$). Então a composição 
+    $R=R_1\circ R_2$ é uma rotação. O eixo de $R$ é
+    \[
+        k=(\cos\vartheta_1\sen\vartheta_2) k_2+(\cos\vartheta_2\sen\vartheta_1) k_1+
+        (\sen\vartheta_1\sen\vartheta_2)k_1\times k_2
+    \] 
+    e o ângulo de $R$ é o ângulo $\vartheta$ que satisfaz 
+    \begin{align*}
+        \cos(\vartheta/2)&=\cos(\vartheta_1/2)\cos(\vartheta_2/2)-\sen(\vartheta_1/2)\sen(\vartheta_2/2)\cos\varphi\\
+        \sen(\vartheta/2)&=\|k\|\\&=\left(\sen^2(\vartheta_1/2)\sen^2(\vartheta_2/2)\sen^2(\varphi)+\sen^2((\vartheta_1\vartheta_2)/2)\right.\\
+        &\left.+\frac{\cos^2((\vartheta_1-\vartheta_2)/2))-\cos^2((\vartheta_1+\vartheta_2)/2)}{2}(\cos\varphi-1)\right)^{1/2}
+    \end{align*}
+
+\end{theorem}
 \end{document}
  
