@@ -391,7 +391,108 @@ onde $w_0=w/\|w\|$ é um quatérnio unitário puro.
         \sen(\vartheta/2)&=\|k\|\\&=\left(\sen^2(\vartheta_1/2)\sen^2(\vartheta_2/2)\sen^2(\varphi)+\sen^2((\vartheta_1\vartheta_2)/2)\right.\\
         &\left.+\frac{\cos^2((\vartheta_1-\vartheta_2)/2))-\cos^2((\vartheta_1+\vartheta_2)/2)}{2}(\cos\varphi-1)\right)^{1/2}
     \end{align*}
-
 \end{theorem}
+
+\subsection{O mapa exponencial}
+
+Lembre que para um número real $\alpha\in\R$ (ou complexo $\alpha\in\C$), temos as seguintes séries de Taylor:  
+\begin{align*}
+    e^\alpha &= \exp\alpha=\sum_{n=0}^\infty \frac{\alpha^n}{n!}\\
+    \sen\alpha&=\sum_{n=0}^\infty\frac{(-1)^n\alpha^{2n+1}}{(2n+1)!}\\
+    \cos\alpha&=\sum_{n=0}^\infty\frac{(-1)^n\alpha^{2n}}{(2n)!}.\\
+\end{align*}
+
+Seja $v\in\R^3\setminus\{0\}$ e considere $v$ um quatérnio puro de $\Ha$. Pondo $\alpha=\|v\|$, podemos escrever $v=\alpha v_0$ onde $v_0$ é um quatérnio puro unitário. Lembrando que $v_0^2=-1$, temos que 
+\[
+    v_0^0=1,\  v_0^1=v_0,\ v_0^2=-1,\ v_0^3=-v_0,\ v_0^4=1,\ v_0^5=v_0,\ldots \mbox{etc.}
+\]
+Mais precisamente temos que 
+\[
+    v_0^k=\left\{\begin{array}{ll}1 & \mbox{se $k\equiv 0\pmod 4$;}\\
+                                  v_0 &  \mbox{se $k\equiv 1\pmod 4$;}\\
+                                  -1 & \mbox{se $k\equiv 2\pmod 4$;}\\
+                                  -v_0 & \mbox{se $k\equiv 3\pmod 4$;}
+    \end{array}\right.
+\]
+Assim podemos escrever que 
+\[
+    \exp(v)=\exp(\alpha v_0)=\sum_{n=0}^\infty \frac{\alpha^nv_0^n}{n!}=
+    \sum_{n=0}^\infty \frac{(-1)^n\alpha^{2n}}{(2n)!}+
+    \left(\sum_{n=0}^\infty \frac{(-1)^n\alpha^{2n+1}}{(2n+1)!}\right)v_0
+    =\cos\alpha+(\sen\alpha) v_0.
+\]
+Em outras palávras, $\exp(v)$ é um quatérnio unitário. Assim obtemos um mapa 
+\[
+    \exp:\Ha \to \{u\in\Ha\mid \|u\|=1\},\quad v\mapsto \exp(v).
+\]
+Note que o mapa $\exp$ é sobrejetiva, mas não é injetiva, pois 
+$\exp(\alpha v_0)=\exp((\alpha+2\pi)v_0)$, mas podemos definir 
+para $q=\cos\alpha+(\sen\alpha)v_0$ o seu logaritmo como  
+\[
+    \log q=\alpha v_0
+\]
+e assim temos que 
+\[
+    \exp(\log q)=q
+\]
+para todo $q\in\Ha$ unitário.
+
+O exponencial e logaritmo nos permite definir para um quatérnio puro $q$ e para um $t\in\R$, 
+o exponencial $q^t$ como 
+\[
+    q^t=e^{\log q\cdot t}=\exp(t\log q).
+\]
+
+\subsection{Interpolação geodésica}
+Dados $R_1,R_2\in SO_3$, queremos obter um caminho suave 
+composto por rotações em $SO_3$ 
+entre $R_1$ e $R_2$ com a propriedade que a ``velocidade do caminho'' é constante.
+Matematicamente, nós queremos obter uma curva suave
+\[
+    \varphi:[0,1]\to SO_3,\quad \varphi(0)=R_0\quad\mbox{e}\quad \varphi(1)=R_1
+\]
+com $(d/dt)\varphi(t)$ constante.
+
+Sejam $R_1$ e $R_2$ representadas por quatérnions 
+\[
+    p=\cos\alpha+(\sen\alpha)p_0\quad\mbox{e}\quad q=\cos\beta+(\sen\beta)q_0
+\]
+onde $\alpha,\beta\in[0,2\pi)$ e $p_0,q_0\in \Ha$ são quatérnios unitários.
+Representando os quatérnios nesse jeito, o nosso problema pode ser visto como o problema de achar 
+uma curva suave
+\[
+    \varphi:[0,1]\to \{v\in\Ha\mid \|v\|=1\}
+\]
+com $\varphi(0)=p$ e $\varphi(1)=q$ tal que $d\varphi/dt$ constante.
+
+Assuma primeiro que $p=1$. Neste caso defina 
+\[
+    \varphi:[0,1]\to SO_3,\quad \varphi(t)=\cos(t\beta)+\sen(t\beta)q_0=\exp(t\beta q_0)=
+    \exp(t\log q)=q^t.
+\]
+Claramente, $\varphi(0)=1$ e $\varphi(1)=q$. Além disso 
+\[
+    \frac d{dt}\varphi(t)=-\sen(t\beta)\beta+\cos(t\beta)\beta q_0
+\]
+e assim 
+\[
+    \|\frac d{dt}\varphi(t)\|=|\beta|.
+\]
+Assim, $(d/dt)\varphi(t)$ é constante e assim a curva $\varphi$ pode ser vista como uma curva de velocidade
+constante. Pode ainda verificar que $\varphi$ é uma curva ao longo de uma geodésica. 
+
+Sejam agora $p,q\in\Ha$ unitários e escreva 
+\[
+p=\cos\alpha+(\sen\alpha)p_0\quad\mbox{e}\quad q=\cos\beta+(\sen\beta)q_0
+\]
+Considere a curva 
+\[
+    \varphi_0:[0,1]\to SO_3,\quad \varphi(t)=(qp^{-1})^t.
+\]
+Ora a curva $\varphi$ desejada será obtida como o produto $\varphi_0(t)p$:
+\[
+    \varphi(t)=(qp^{-1})^tp.
+\]
+Claramente, $\varphi(0)=p$, $\varphi(1)=q$ e $(d/dt)\varphi(t)$ é constante. 
 \end{document}
  
