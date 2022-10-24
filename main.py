@@ -16,7 +16,7 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode((600,480),HWSURFACE|DOUBLEBUF)
 
     fig = cube 
-    mat_r = matrix_rotation_3D( .01, (-1,1,1))
+    mat_r = matrix_infinitesimal_rotation_3D( .01, (-1,1,1))
 
     while True:
         #mat_r = matrix_rotation_3D( .01, (-1,1,1))

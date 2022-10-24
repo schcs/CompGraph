@@ -493,6 +493,38 @@ Ora a curva $\varphi$ desejada será obtida como o produto $\varphi_0(t)p$:
 \[
     \varphi(t)=(qp^{-1})^tp.
 \]
-Claramente, $\varphi(0)=p$, $\varphi(1)=q$ e $(d/dt)\varphi(t)$ é constante. 
+Claramente, $\varphi(0)=p$, $\varphi(1)=q$ e $|(d/dt)\varphi(t)|=|\beta|$ é constante (onde $\beta$ é o ângulo entre $p$ e $q$). 
+
+
+
+\begin{lemma}
+    Seja $\varphi$ como em cima e assuma que $\beta$ é o ângulo entre $p$ e $q$ ($\cos\beta=(p,q)$). Então 
+    \[
+        \varphi(t)=\frac{\sen(1-t)\beta}{\sen\beta}p+\frac{\sen(t\beta)}{\sen{\beta}}q
+    \]
+\end{lemma}
+\begin{proof}
+Assuma primeiro que $p=1$. Escrevendo $q=\cos\beta+(\sen\beta) q_0$, 
+a fórmula em cima dá que 
+\[
+    \varphi(t)=\cos(t\beta)+(\sen(t\beta))q_0.
+\]
+Precisamos provar apenas que 
+\begin{align*}
+    \cos(t\beta)&=\frac{\sen(1-t)\beta}{\sen\beta}+\frac{\cos\beta\sen(t\beta)}{\sen\beta}\\
+    \sen(t\beta)&=\frac{\sen\beta\sen(t\beta)}{\sen\beta}.
+\end{align*}
+A segunda afirmação está óbvia, a primeira pode ser verificada usando as identidades trigonomêtricas.
+
+Assuma agora que $q$ é arbitrário.  Como multiplicação por $q$ preserva ângulo, 
+o ângulo entre $p$ e $q$ é o mesmo que entre $1$ e $pq^{-1}$. Logo a interpolação esférica entre $1$ e $pq^{-1}$ está dada por 
+\[
+    \varphi_0(t)=\frac{\sen(1-t)\beta}{\sen\beta}+\frac{\sen(t\beta)}{\sen{\beta}}pq^{-1}.
+\]
+Multplicando $\varphi_0(t)$ por $q$, obtemos a interpolação esférica entre $p$ e $q$ como 
+\[
+    \varphi(t)=\frac{\sen(1-t)\beta}{\sen\beta}p+\frac{\sen(t\beta)}{\sen{\beta}}q.
+\]
+\end{proof}
 \end{document}
  

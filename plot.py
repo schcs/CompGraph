@@ -13,8 +13,7 @@ def is_visible( ph, face ):
     return dot_product( n, eye ) <= 0
 
 
-def draw_ph( screen, ph, color = 255 ):
-
+def draw_ph( screen, ph, color = (255,255,255) ):
     t = lambda p: (p[0]+300, -p[1]+240 )
     for face in ph.faces:
         for i in range( 1, len(face)):

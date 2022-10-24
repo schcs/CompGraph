@@ -1,5 +1,6 @@
 # The polyhedron class
 
+from quats import *
 from numpy import *
 from affine_transform import matrix_projection_to_plane
 from plot import is_visible
@@ -61,6 +62,10 @@ icosa = Polyhedron( [(0,100,gr), (0,-100,gr), (0,100,-gr), (0,-100,-gr),
 
 def transform_ph( ph, matrix ):
     return Polyhedron( [ p@matrix for p in ph.points ], ph.edges, ph.faces, ph.type )
+
+def transform_ph_quat( ph, q ):
+    return Polyhedron( [ q.conjugate_vec( p ) for p in ph.points ], ph.edges, ph.faces, ph.type )
+
 
 
 def project_ph_onto_plane( ph, n ):

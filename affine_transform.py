@@ -18,3 +18,11 @@ def matrix_rotation_3D( theta, n = (1,0,0) ):
                  [-n[1],n[0],0]])
 
     return array( cos(theta)*identity( 3 )+sin(theta)*nx+(1-cos(theta))*nn )
+
+def matrix_infinitesimal_rotation_3D( theta, n = (1,0,0) ):
+
+    return identity(3) + theta*array( [[0,-n[2],n[1]], 
+                                [n[2],0,-n[0]],
+                                [-n[1],n[0],0]])
+
+
