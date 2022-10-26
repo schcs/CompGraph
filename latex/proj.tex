@@ -1,0 +1,225 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+%\usepackage{tikz-cd}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\renewcommand{\r}{\mathfrak r}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Ha}{\mathbb H}
+
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\R}{\mathbb R}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+\newcommand{\spec}[1]{\mbox{Spec}(#1)}
+\newcommand{\len}{\mbox{len}\,}
+\newcommand{\id}{\mbox{id}\,}
+\DeclareMathOperator{\sen}{\textrm{\rm sen}}
+%\newcommand{\sen}{\mbox{sen}\,}
+\newcommand{\gl}[1]{\mbox{GL}_{#1}}
+\newcommand{\SL}[1]{\mbox{SL}_{#1}}
+\newcommand{\glv}[1]{\mbox{GL}(#1)}
+\newcommand{\slv}[1]{\mbox{SL}(#1)}
+\newcommand{\Sym}{\mbox{Sym}}
+\usepackage[portuguese]{babel}
+\newcommand{\rot}[1]{{\textrm{Rot}}_{#1}}
+\newcommand{\refl}[1]{{\textrm{Ref}}_{#1}}
+
+
+
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{corollary}[theorem]{Corolário}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{exercise}[theorem]{Exercício}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Exemplo}
+\newtheorem{definition}[theorem]{Definição}
+\renewcommand{\P}{\mathcal P}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\I}{\mathcal I}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\agl}{\mbox{AGL}}
+
+
+
+
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+\date{\today}
+\title[Quatérnios]{Espaços afins e projetivos}
+\maketitle
+
+\section{Espaços afins e transformações afins}
+
+Considere o espaço $\R^n$ mergulhado em $\R^{n+1}$ com a inclusão:
+\[
+    v=(\alpha_1,\ldots,\alpha_n)\mapsto \overline v=(\alpha_1,\ldots,\alpha_n,1)
+\]
+Lembre que o grupo $\agl_n$ é o grupo de transformações que podemos obter pela composição de uma 
+transformação linear de $\R^n$ e uma translação em $\R^n$. 
+Seja $L:\R^n\to \R^n$ uma transformação linear com matriz $X=[L]$ na base canônica. Seja $\bar X$ a 
+matriz 
+\[ 
+    \bar X=\begin{pmatrix} X & \underline 0^t\\ \underline 0 & 1\end{pmatrix} 
+\]
+onde $\underline 0$ denota o vector nulo em $\R^n$. assum $\bar X$ é uma matriz 
+$(n+1)\times(n+1)$. A matriz $\bar X$ chama-se \emph{matriz aumentada}.
+É fácil verificar que $L(v)=w$ se e somente se $\bar X\bar v = \bar w$. 
+\begin{example}
+    Assuma que $L:\R^2\to\R^2$ é a rotação por $\pi/4$ (por volta da origem). 
+    Então a sua matriz na base canônica é 
+    \[
+        X=\frac{\sqrt 2}{2}\begin{pmatrix} 1 & -1\\ 1 & 1\end{pmatrix}.
+    \]
+    A matriz aumentada que corresponde a $T$ é 
+    \[
+        \bar X=\begin{pmatrix} \sqrt 2/2 & -\sqrt 2/2 & 0 \\ \sqrt 2/2 & \sqrt 2/2 & 0 \\ 0 & 0 & 1
+        \end{pmatrix}
+    \]
+\end{example}
+
+Agora seja $b\in\R^n$ e defina a matriz 
+\[
+    X_b=\begin{pmatrix} I & b^t \\ \underline 0 & 1\end{pmatrix}.
+\]
+Considere $v\in\R^n$. Temos que 
+\[
+    X_b\bar v=\overline{v+b}=\overline{T_b(v)};
+\]
+ou seja, multiplicação por $X_b$ corresponde a translação pelo vetor $b$. 
+
+\begin{example}
+    Seja $b=(-1,2)\in\R^2$.
+    Então 
+    \[
+    X_b=\begin{pmatrix} 1 & 0 & -1 \\ 0 & 1 & 2 \\ 0 & 0 & 1\end{pmatrix}.    
+    \]
+    Se $v=(\alpha,\beta)\in\R^2$, então $\bar v=(\alpha,\beta,1)$ e  
+    \[
+        X_b\bar v=
+        X_b=\begin{pmatrix} 1 & 0 & -1 \\ 0 & 1 & 2 \\ 0 & 0 & 1\end{pmatrix}
+        \cdot\begin{pmatrix} \alpha \\ \beta \\ 1 \end{pmatrix}=
+        \begin{pmatrix}\alpha-1 \\ \beta +2  \\ 1 \end{pmatrix}=\overline{T_b(v)}.    
+    \]
+\end{example}
+
+Finalmente, se $L:\R^n\to \R^n$ é uma transformação linear com matriz $X$ (na base canônica) 
+e $b\in\R^n$, então defina 
+\[
+    X_{L,b}=\begin{pmatrix} X & b^t\\ \underline{0} & 1\end{pmatrix}.
+\]
+É fácil verificar que 
+\[
+    X_{L,b}\overline v=\overline{L(v)+b}.
+\]
+Ou seja, multiplicação pela matriz $X_{L,b}$ corresponde a composição $T_b\circ L$ em $\agl_n$.
+
+\begin{example}
+    Assuma que $b=(-1,2)$ e seja $L:\R^2\to\R^2$ a rotação por $\pi/4$ como no exemplo anterior. Então a 
+    matriz
+    \[
+        X_{L,b}=\begin{pmatrix} \sqrt 2/2 & -\sqrt 2/2 & -1 \\ \sqrt 2/2 & \sqrt 2/2 & 2 \\ 0 & 0 & 1
+        \end{pmatrix}
+    \]
+    Seja $v=(\alpha,\beta)\in\R^2$. Então $\bar v=(\alpha,\beta,1)$ e 
+    \[
+        \begin{pmatrix} \sqrt 2/2 & -\sqrt 2/2 & -1 \\ \sqrt 2/2 & \sqrt 2/2 & 2 \\ 0 & 0 & 1
+        \end{pmatrix}\begin{pmatrix}\alpha \\ \beta\\ 1\end{pmatrix}=
+        \overline{L(v)+b}.
+    \]
+\end{example}
+
+Sejam $b_1,b_2\in \R^n$, $L_1,L_2\in \mbox{GL}_n$ e $v\in \R^n$. Então 
+\[
+    (T_{b_1}\circ L_1)\circ(T_{b_2}\circ L_2)v=
+    L_1L_2v+L_1b_2+b_1=T_{L_1b_2+b_1}\circ (L_1\circ L_2).
+\]
+Pode verificar que 
+\[
+    X_{L_1,b_1}X_{L_2,b_2}=X_{L_1L_2,L_1b_2+b_1}.
+\]
+
+\begin{theorem}
+    O grupo $\agl_n$ é isomorfo ao grupo de matrizes na forma 
+    \[
+        \{X_{L,b}\mid L\in\mbox{GL}_n\mbox{ e }b\in\R^n\}.
+    \]
+    O isomorfismo está dado por $T_b\circ L\mapsto X_{L,b}$. 
+\end{theorem}
+
+
+
+\section{Planos projetivos}
+
+\begin{definition}
+    A reta projetiva $\PP^1\F$ sobre um corpo $\F$ é o conjunto das retas em $\F^2$ que passam pela origem.
+    Uma reta $L_{a,b}=\{(x,y)\in\F^2 \mid ax+by=0\}\subseteq \F^2$ é chamado de \emph{ponto} na reta projetiva $\PP^1\F$.
+    Este ponto de $\PP^1\F$ pode ser representato com as coordenadas $[a,b]$ Estes coordenadas são 
+    chamadas de coordenadas homgêneas. Note que $[a,b]$ representa um ponto em $\PP^1\F$ se e somente se 
+    $(a,b)\neq (0,0)$ e $[\alpha a,\alpha b]$ representa a mesmo ponto que $[a,b]$ 
+    para todo $\alpha\in\F\setminus\{0\}$. Assim, todo ponto de $\PP^1\F$ pode ser representado com as coordenadas 
+    \[
+        [1,b]\quad\mbox{ou}\quad [0,1]
+    \]
+    com algum $b\in \F$. O ponto $[0,1]$ é frequentamente chamado de \emph{ponto em infinito} e assim obtemos que $\PP^1\F$ pode ser identificado com $\F\cup\{P_\infty\}$ onde $P_\infty=[0,1]$ é o ponto em infinito.
+\end{definition}
+
+\begin{definition}
+    Um plano projetivo $\Pi$ consiste de um conjunto $\P$ de pontos, um conjunto $\L$ de linhas (ou retas) e uma relação de incidência $\I\subseteq \P\times \I$ tal que 
+    \begin{enumerate}
+        \item Se $P_1,P_2\in \P$ distintos, então existe uma linha única linha $L \in \I$ tal que 
+        $P_1\in L$, $P_2\in L$.
+        \item Se $L_1,L_2\in \L$, então existe um único ponto $P\in \P$ tal que $P\in L_1$ e $P\in L_2$.
+        \item Existem quatro pontos que nenhuma linha é incidente com mais que dois destes pontos.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}[Plano Euclediano Estendido]
+    Considere o plano $\R^2$ com os pontos e linhas usuais. (Ou seja, os pontos são $P=(x,y)\in\R^2$ e as linhas 
+    são conjuntos $\{(x,y)\mid ax+by=c\}$ com $(a,b,c)\neq (0,0,0)$.)
+    Considere a relação de equivalência $\sim$ entre linhas 
+    onde $L_1\sim L_2$ se e somente se $L_1$ e $L_2$ são paralelas. 
+    Seja $[L]$ a classe de equivalência da linha $L$. 
+    \begin{enumerate}
+        \item Para cada classe $\ell=[L]$ introduza um novo ponto $P_\ell$ (ponto no infinito) e extenda 
+    a incidência em tal modo que  $P_\ell\in L$ se e somente se $L\in \ell$.
+    \item Introduza uma nova linha $L_\infty$ em tal modo que $L_\infty$ contem precisamente os pontos no infinito. A linha $L_\infty$ chama-se a linha em infinito.
+    \end{enumerate}    
+    A geometria obtida por este processo chama-se 
+    \emph{Plano Euclediano Estendido} e é denotado por $E\R^2$. Deixamos para o leitor a verificação que $E\R^2$ é um plano projetivo.
+\end{example}
+
+\begin{example}
+    Seja $\F$ um corpo qualquer (pode tomar por exemplo, $\F=\Q$, $\F=\R$, $\F=\C$, ou $\F=\F_p$), e considere 
+    o espaço $\F^3$. Seja $\P$ o conjunto das retas que passam pela origem, e seja $\L$ o conjunto dos planos que passam pela origem. Um ponto $P$ é incidente com uma reta $L$, se $P\subseteq L$. É fácil verificar que 
+    $\PP^3_\F=(\P,\L,\I)$ é um plano projetivo. Nós geralmente vamos considerar o plano $\PP^3=\PP^3_\R$. 
+\end{example}
+
+
+
+\end{document}
+ 
