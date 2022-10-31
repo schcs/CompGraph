@@ -70,7 +70,7 @@
 
 \begin{document}
 \date{\today}
-\title[Quatérnios]{Espaços afins e projetivos}
+\title{Espaços afins e projetivos}
 \maketitle
 
 \section{Espaços afins e transformações afins}
@@ -219,6 +219,90 @@ Pode verificar que
     $\PP^3_\F=(\P,\L,\I)$ é um plano projetivo. Nós geralmente vamos considerar o plano $\PP^3=\PP^3_\R$. 
 \end{example}
 
+\subsection{Coordenadas homogêneas}
+Considere o plano $E\R^2$ estendido. Introduzimos coordenadas homogêneas para pontos e retas.
+\begin{enumerate}
+\item Seja $p=(x,y)\in\R^2$. A tripla $[\lambda x,\lambda y,\lambda]$ 
+é coordenada homogênea para $p$ com $\lambda\in\R\setminus\{0\}$. 
+\item Seja $p$ um ponto em infinito que corresponde a uma classe paralela de linhas $ax+by+c=0$ com $a,b\in\R$ 
+fixados. A tripla $[\lambda a,\lambda b,0]$ é coordenada homogênea de $p$ com qualquer 
+$\lambda\in\R\setminus\{0\}$. 
+\item Seja $\ell$ uma reta a equação $ax+by+c=0$. Então a tripla $[a,b,c]$ é coordenada homegênea para $\ell$. 
+\item Seja $\ell$ a reta no infnito. Então $[0,0,\lambda]$ é coordenada homogênea de $\ell$ para qualquer 
+$\lambda\in\R\setminus\{0\}$. 
+\end{enumerate}
+
+\begin{lemma}
+    Todo ponto e toda reta em $E\R^2$ possui coordenadas homogêneas. Além disso 
+    $[\alpha_1,\alpha_2,\alpha_3]$ e $[\beta_1,\beta_2,\beta_3]$ representam o mesmo ponto/reta se e somente 
+    se existe $\lambda\in\R\setminus\{0\}$ tal que $\beta_i=\lambda\alpha_i$ para todo $i\in\{1,2,3\}$.  
+\end{lemma}
+\begin{proof}
+    Segue as definições.
+\end{proof}
+
+\begin{lemma}
+    Seja $p$ um ponto e $\ell$ uma reta representados pelas coordenadas $[a,b,c]$ e $[u,v,w]$. Temos que 
+    $p\in\ell$ se e somente se $[a,b,c]\cdot [u,v,w]=0$. (produto escalar)
+\end{lemma}
+\begin{proof}
+    Segue as definições.
+\end{proof}
+
+\begin{lemma}
+    Assuma que $[u_1,v_1,w_1]$ e $[u_2,v_2,w_2]$ são retas distintas em $E\R^2$. Temos que 
+    as coordenadas homegeneas do único ponto na interseção das duas retas são 
+    dadas pelo produto vetorial
+    $[u_1,v_1,w_1]\times [u_2,v_2,w_2]$. 
+\end{lemma}
+\begin{proof}
+    Note que o produto misto 
+    \[
+        [u_1,v_1,w_1]\cdot([u_1,v_1,w_1]\times [u_2,v_2,w_2])=\det\begin{pmatrix}
+            u_1 & u_1 & u_2\\ v_1 & v_1 & v_2\\w_1 & w_1 & w_2\end{pmatrix}=0. 
+    \]
+    Uma conta similar mostra que $[u_2,v_2,w_2]\cdot([u_1,v_1,w_1]\times [u_2,v_2,w_2])=0$. 
+    Então o ponto com coordenadas homogêneas $[u_1,v_1,w_1]\times [u_2,v_2,w_2]$ está nas duas linhas. 
+    Pelos axiomas do plano projetivo, este é o único ponto nas duas retas. 
+
+    Note que $[u_1,v_1,w_1]\times [u_2,v_2,w_2]\neq [0,0,0]$ são retas distintas, e assim 
+    $[u_1,v_1,w_1]$ e $[u_2,v_2,w_2]\neq [0,0,0]$. 
+\end{proof}
+
+\begin{lemma}
+    Assuma que $[a_1,b_1,c_1]$ e $[a_2,b_2,c_2]$ são pontos distintos em $E\R^2$. Temos que 
+    as coordenadas homegeneas da única reta que passa por estes dois pontos  são 
+    dadas pelo produto vetorial
+    $[a_1,b_1,c_1]\times [a_2,b_2,c_2]$. 
+\end{lemma}
+\begin{proof}
+    Igual ao lema anterior.
+\end{proof}
+
+\begin{lemma}
+    Assuma que $p_1=[a_1,b_1,c_1]$, $p_2=[a_2,b_2,c_2]$ e $p_3=[a_3,b_3,c_3]$ são pontos em $E\R^2$. 
+    Os pontos $p_1,p_2,p_3$ são collineares se e somente se
+    \[
+        \det\begin{pmatrix} a_1 & a_2 & a_3\\ b_1 & b_2 & b_3\\ c_1 & c_2 & c_3\end{pmatrix}=0.
+    \]
+\end{lemma}
+\begin{proof}
+    Se $p_2=p_3$, então os três pontos são collineares e o determinante no teorema é também igual a zero. 
+    Assuma que $p_2\neq p_3$.
+    Os pontos $p_1$, $p_2$, e $p_3$ são collineares se e somente se o ponto $p_1$ está na reta determinada 
+    por $p_2$ e $p_3$. Isso occorre se e somente se 
+    \[
+        0=p_1\cdot (p_2\times p_3)=\det\begin{pmatrix} a_1 & a_2 & a_3\\ b_1 & b_2 & b_3\\ c_1 & c_2 & c_3\end{pmatrix}.
+    \]
+\end{proof}
+
+\begin{lemma}
+    Assuma que $\ell_1=[u_1,v_1,w_1]$, $\ell_2=[u_2,v_2,w_2]$ e $\ell_3=[u_3,v_3,w_3]$ são retas em $E\R^2$. 
+    As retas $\ell_1,\ell_2,\ell_3$ são concorrentes se e somente se
+    \[
+        \det\begin{pmatrix} u_1 & u_2 & u_3\\ v_1 & v_2 & v_3\\ w_1 & w_2 & w_3\end{pmatrix}=0.
+    \]
+\end{lemma}
 
 
 \end{document}

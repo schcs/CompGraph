@@ -1,0 +1,103 @@
+\documentclass{amsart}
+
+
+\usepackage{verbatim}
+\usepackage{amssymb}
+
+\usepackage[brazilian]{babel}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+
+\newcommand{\sym}[1]{{\mathsf S}_{#1}}
+\newcommand{\alt}[1]{{\mathsf A}_{#1}}
+\newcommand{\SL}[2]{{\sf SL}(#1,#2)}
+\newcommand{\GL}[2]{{\sf GL}(#1,#2)}
+\newcommand{\N}{\mathbb N}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\nullvec}{\overline 0}
+\DeclareMathOperator{\sen}{\textrm{\rm sen}}
+
+\newcommand{\mat}[2]{{\mathsf M}_{#1,#2}}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+\parskip 5pt
+\parindent 0pt
+
+\begin{document}
+
+
+\begin{center}
+\large Geometria com aplicações na gráfica computacional\\
+{\bf\large Folha 5 de exercícios}\\
+csaba@mat.ufmg.br
+\end{center}
+
+
+\bigskip
+
+{\bf 1.} Seja $p$ um quatérnio unitário e $t\in\R$. Mostre que $(qp^t\bar q)=(qp\bar q)^t$ onde $\bar q$ é 
+o conjugado de $q$. 
+
+\medskip
+
+{\bf 2.} Mostre, para um quatérnio unitário $q$ e $a,b\in\R$ que 
+\[
+    q^aq^b=q^{a+b}\quad\mbox{e}\quad (q^a)^b=q^{ab}.
+\]
+\medskip
+
+{\bf 3.} Verifique as seguintes igualdades para quatérnios unitários $p$ e $q$:
+\begin{enumerate}
+    \item $\mbox{slerp}(p,q,t)=p(\bar pq)^t$;
+    \item $\mbox{slerp}(p,q,t)=(p\bar q)^{1-t}q$;
+    \item $\mbox{slerp}(p,q,t)=(q\bar p)^{t}p$;
+    \item $\mbox{slerp}(p,q,t)=q(\bar qp)^{1-t}q$.
+\end{enumerate}
+Deduza que $\mbox{slerp}(p,q,t)=\mbox{slerp}(q,p,1-t)$. 
+
+\medskip
+
+
+{\bf 4.} Mostre que a multiplicação entre dois quatérnios pode ser efetuada por apanas 8 multiplicações
+entre números reais. [Dica: Consulte Exercício~20 na página 112 do livro "Fundamentos da Computação Gráfica" por Gomes e Velho.]
+
+\medskip
+
+{\bf 5.} Assuma que $r$ é um quatérnio puro e unitário. Considere o mapa $R:\mathbb H\to\mathbb H$
+definido por $q\mapsto rqr$. 
+\begin{enumerate}
+    \item Mostre que $\left<i,j,k\right>$ é um subespaço $R$-invariante.
+    \item Mostre que a restrição de $R$ para o suespaço $\R^3=\left<i,j,k\right>$
+    pode ser vista como a reflexão de $\R^3$ em relação ao plano perpendicular a $r$. 
+\end{enumerate}
+
+
+\medskip
+
+{\bf 6.} Uma matriz quadrada $A$ com entradas complexas e dita unitária se $A^*A=I$ onde $A^*$ é a conjugada transposta de $A$ (ou seja, $A^*$ é obtida de $A$ por tomar a conjugada complexa de cada entrada e depois 
+tomar a transposta.)  Denote por $SU_2$ o grupo de matrizes unitárias $2\times 2$ com determinante $1$. 
+Para cada quatérnio unitário $q=a+bi+cj+dk$, denote por $A_q$ a matriz 
+\[
+\begin{pmatrix} a+ib & c+id \\ -c+id & a-ib\end{pmatrix}.
+\]
+\begin{enumerate}
+\item Verifique que $A_q\in SU_2$.
+    \item   Verifique que $\psi$ é um homomorfismo de grupos, ou seja $\psi(q_1q_2)=\psi(q_1)\psi(q_2)$. 
+    \item Demonstre que o mapa $\psi: q\mapsto A_q$ é uma bijeção entre o grupo de quatérnios unitários e 
+    $SU_2$.
+\end{enumerate}
+
+\end{document}
+

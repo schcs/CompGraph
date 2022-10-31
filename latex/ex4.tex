@@ -1,0 +1,117 @@
+\documentclass{amsart}
+
+
+\usepackage{verbatim}
+\usepackage{amssymb}
+
+\usepackage[brazilian]{babel}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+
+\newcommand{\sym}[1]{{\mathsf S}_{#1}}
+\newcommand{\alt}[1]{{\mathsf A}_{#1}}
+\newcommand{\SL}[2]{{\sf SL}(#1,#2)}
+\newcommand{\GL}[2]{{\sf GL}(#1,#2)}
+\newcommand{\N}{\mathbb N}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\nullvec}{\overline 0}
+\DeclareMathOperator{\sen}{\textrm{\rm sen}}
+
+\newcommand{\mat}[2]{{\mathsf M}_{#1,#2}}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+\parskip 5pt
+\parindent 0pt
+
+\begin{document}
+
+
+\begin{center}
+\large Geometria com aplicações na gráfica computacional\\
+{\bf\large Folha 4 de exercícios}\\
+csaba@mat.ufmg.br
+\end{center}
+
+
+\bigskip
+
+{\bf 1.} Seja $R$ uma rotação do espaço $\R^3$ por um ângulo $\vartheta$ em torno de 
+um eixo $k=(k_x,k_y,k_z)$ com $\|k\|=1$. 
+\begin{enumerate}
+    \item Escreva $R$ como produto $R(x,\alpha)R(y,\beta)R(z,\gamma)$ de rotações em torno dos eixos 
+    principais. 
+    \item Escreva $R$ na forma $R(x,\alpha)R(y,\beta)R(x,\gamma)$. 
+\end{enumerate}
+
+\medskip
+
+{\bf 2.} Seja 
+\[
+    T=\begin{pmatrix} n_x & o_x & a_x & p_x \\ 
+        n_y & o_y & a_y & p_y\\
+        n_z & o_z & a_z & p_z \\
+        0 & 0 & 0 & 1\end{pmatrix}
+\]
+a matriz de uma transformação afim $\R^3\to \R^3$ que preserva distância. 
+Mostre que a matriz da transformação inversa está dada por 
+\[
+    \begin{pmatrix} n_x & n_y & n_z & -(p,n)\\
+        o_x & o_y & o_z & -(p,o)\\
+        a_x & a_y & a_z & -(p,a)\\
+        0 & 0 & 0 & 1\end{pmatrix}
+\]
+onde $n=(n_x,n_y,n_z)$, $o=(o_x,o_y,o_z)$, $a=(a_x,a_y,a_z)$ e $(\cdot,\cdot)$ é o produto interno.
+
+\medskip
+
+{\bf 3.} Identifique as rotações do plano $\R^2$ com números complexos $z\in\C$ com $|z|=1$. 
+Sejam $R_1$ e $R_2$ as rotações identificadas com os números $z_1,z_2\in\C$ e seja $t\in[0,1]$. 
+Assuma que $z_1=\exp(i\vartheta_1)$ e $z_2=\exp(i\vartheta_2)$ e considere 
+as três expressões $z_i(t)$ em seguida para uma rotação $R(t)$ interpolando $R_1$ e $R_2$:
+\begin{enumerate}
+    \item $z_1(t)=(1-t)z_1+tz_2$;
+    \item $z_2(t)=  ((1-t)z_1+tz_2)/|(1-t)z_1+tz_2|$;
+    \item $z_3(t)=\exp((1-t)i\vartheta_1+ti\vartheta_2)$.
+\end{enumerate}
+Discuta estas três expressões anilisando as suas vantagens e desvantagens. Mostre que $z_3(t)=(z_2z_1^{-1})^tz_1$.
+
+\medskip
+
+
+{\bf 4.} Deduza a fórmula de Rodrigues usando as séries de Taylor das funções $\exp$, $\sen$ e $\cos$ e o fato 
+que a matriz $R$ da rotação por um ângulo $\vartheta$ em torno de um eixo $k$ unitário é $\exp(\vartheta K)$ 
+onde $K$ é a matriz da transformação $v\mapsto k\times v$.  
+
+
+\medskip
+
+{\bf 5.} Seja $R$ uma rotação em $\R^3$ e seja $v\in\R^3\setminus\{0\}$ um vetor ortogonal ao eixo de $R$. 
+Mostre que o ângulo $\vartheta$ entre $v$ e $R(v)$ satisfaz a relação 
+\[
+    1+2\cos\vartheta=\mbox{Tr}(R)
+\] 
+onde $\mbox{Tr}(R)$ é o traço de $R$. 
+
+\medskip
+
+{\bf 6.} Foi demonstrado na aula que se $R$ é uma matriz de rotação em $\R^3$, então $R=\exp K$ onde 
+$K$ é uma matriz anti-simétrica ($K^T=-K$). Defina o mapa $\log:SO_3\to M_{3\times 3}(\R)$ com a propriedade 
+que 
+\[
+    \exp(\log R)=R
+\] 
+para toda matrix $R$ de rotação. 
+\end{document}
+
