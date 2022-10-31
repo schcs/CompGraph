@@ -304,6 +304,45 @@ $\lambda\in\R\setminus\{0\}$.
     \]
 \end{lemma}
 
+\subsection{Espaço estendido $E\R^3$}
+Considere $\R^3$. Para cada classe $C$ de retas paralelas, introduza um ponto em infinito $P_C$ 
+e $P_C \in\ell$ para todo $\ell \in C$. Para classe $D$ de planos paralelos, introduza uma reta $\ell_D$ 
+em infinito tal que $\ell_D\in \Pi$ para todo $\Pi\in D$ e $\ell_D$ contém os pontos em infinito que 
+são contidos nas retas de $\Pi$. Finalmente, introduza um plano $\Pi_\infty$ em infinito que contém 
+as retas em infinito.
 
+As coordenadas homogêneas dos pontos $(a,b,c)\in\R^3$ são $[\lambda a,\lambda b,\lambda c,\lambda]$ 
+com $\lambda\in\R\setminus\{0\}$. Se $C$ é uma classe de retas paralelas, paralelo ao vetor $(v_1,v_2,v_3)$, 
+então as coordenadas homogêneas do ponto correspondente são $[v_1,v_2,v_3,0]$. 
+Um plano definida pela equação $ax+by+cz+d=0$ tem coordenadas homogêneas $[a,b,c,d]$, enquanto o plano em 
+infinito tem coordenadas homogêneas $[0,0,0,\lambda]$ com $\lambda\in\R\setminus\{0\}$. 
+
+\begin{lemma}
+    Sejam $p_1=[a_1,b_1,c_1,d_1]$, $p_2=[a_2,b_2,c_2,d_2]$, $p_3=[a_2,b_2,c_2,d_2]$ pontos em $E\R^3$.
+    Os pontos $p_1,p_2,p_3$ são collineares se e somente se os vetores são linearmente dependentes.   
+\end{lemma}
+\begin{proof}
+    Exercício.
+\end{proof}
+
+Se $p_1=[a_1,b_1,c_1,d_1]$, $p_2=[a_2,b_2,c_2,d_2]$ são pontos distintos em $E\R^3$, então os pontos 
+da reta determinada por $p_1$ e $p_2$ são os pontos com coordenadas $[a,b,c,d]$ tal que 
+$[a,b,c,d]$ é uma combinação linear de $[a_1,b_1,c_1,d_1]$ e $[a_2,b_2,c_2,d_2]$. Assim a reta que passa
+pelos pontos $p_1$ e $p_2$ pode ser representada pela seguinte representação paramétrica:
+\[
+    \alpha[a_1,b_1,c_1,d_1]+\beta[a_2,b_2,c_2,d_2]\quad\mbox{onde}\quad \alpha,\beta\in\R
+    \quad\mbox{com}\quad (\alpha,\beta)\neq (0,0).
+\]
+
+\subsection{Coordenadas Pl\"ucker}
+Seja $p_1=[x_1,x_2,x_3,x_4]$ e $p_2=[y_1,y_2,y_3,y_4]$ dois pontos em $E\R^3$. Para $i,j\in\{1,\ldots,4\}$,  
+ponha 
+\[
+    p_{i,j}=\det\begin{pmatrix} x_i & y_i\\ x_j & y_j\end{pmatrix}
+\]
+As coordenadas Plucker da reta que passa pelos pontos $p_1$ e $p_2$ são definidas como 
+\[
+    [p_{1,2},p_{1,3},p_{1,4},p_{3,4},p_{4,2},p_{2,3}].
+\]
 \end{document}
  
