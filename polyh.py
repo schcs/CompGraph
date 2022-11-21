@@ -1,5 +1,6 @@
 # The polyhedron class
 
+from proj_transform import perspective_projection_matrix
 from quats import *
 from numpy import *
 from affine_transform import matrix_projection_to_plane
@@ -34,12 +35,20 @@ class Polygon:
 
 # We define two polyhedra to experiment with 
 
-cube = Polyhedron( [(-100, 100, 100), ( 100, 100, 100),
-                          ( 100,-100, 100), (-100,-100, 100),
-                          (-100, 100,-100), ( 100, 100,-100),
-                          ( 100,-100,-100), (-100,-100,-100)], 
+cube = Polyhedron( [(-100, 100, 100 ), ( 100, 100, 100 ),
+                          ( 100,-100, 100 ), (-100,-100, 100 ),
+                          (-100, 100,-100 ), ( 100, 100,-100 ),
+                          ( 100,-100,-100 ), (-100,-100,-100 )], 
                    [(1,2),(2,3),(3,4),(4,1),(5,6),(6,7),(7,8),(8,5),(1,5),(2,6),(3,7),(4,8)], 
                    [(1,2,3,4,1),(5,6,7,8,5),(1,5,6,2,1),(4,3,7,8,4),(2,6,7,3,2),(1,5,8,4,1)])
+
+cube_homog = Polyhedron( [(-100, 100, 100, 1 ), ( 100, 100, 100, 1 ),
+                          ( 100,-100, 100, 1 ), (-100,-100, 100, 1 ),
+                          (-100, 100,-100, 1 ), ( 100, 100,-100, 1 ),
+                          ( 100,-100,-100, 1 ), (-100,-100,-100, 1 )], 
+                   [(1,2),(2,3),(3,4),(4,1),(5,6),(6,7),(7,8),(8,5),(1,5),(2,6),(3,7),(4,8)], 
+                   [(1,2,3,4,1),(5,6,7,8,5),(1,5,6,2,1),(4,3,7,8,4),(2,6,7,3,2),(1,5,8,4,1)])
+
 
 square = Polygon( [(50, 100,0), ( 100, 100,0),
                      ( 100,50,0), (50,50,0)], 
@@ -71,10 +80,17 @@ def transform_ph_quat( ph, q ):
 def project_ph_onto_plane( ph, n ):
 
     mat = matrix_projection_to_plane( n )
-
     new_ph = Polyhedron( [], [], [] )
     new_ph.points = [ p@mat for p in ph.points ]
     new_ph.edges = ph.edges
     new_ph.faces = [ f for f in ph.faces if is_visible( ph, f )]
     return new_ph
  
+def perspective_projection_ph_onto_plane( ph, C, P ):
+
+    mat = perspective_projection_matrix( C, P )
+    new_ph = Polyhedron( [], [], [] )
+    new_ph.points = [ p@mat for p in ph.points ]
+    new_ph.edges = ph.edges
+    new_ph.faces = [ f for f in ph.faces if is_visible( ph, f )]
+    return new_ph
