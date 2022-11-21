@@ -11,7 +11,11 @@ class ProjPlane:
         self.y0 = y0
     
     def coordinates_of_point( self, Q ):
-        return dot( Q, self.x0 ), dot( Q, self.y0 )
+        proj = perspective_projection_matrix( [coord[0], coord[1], coord[2], 0 ], 
+                                                [coord[0], coord[1], coord[2],0] )
+        Q0 = Q@proj
+        Q0 = [ Q0[0], Q0[1], Q0[2] ]
+        return dot( Q0, self.x0 ), dot( Q0, self.y0 )
 
     def rotate( self, rot ):
         self.coord = self.coord@rot 

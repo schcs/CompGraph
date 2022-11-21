@@ -40,8 +40,8 @@ if __name__ == "__main__":
 
         #fig = transform_ph( fig, mat_r )
         ph_proj = perspective_projection_ph_onto_plane( fig, C, P )
-        draw_ph_homog( screen, ph_proj, color = 255 )
-
+        draw_ph_homog_plane( screen, ph_proj, P, color = 255 )
+        
         pygame.display.flip( )
 
         event = pygame.event.poll()
@@ -50,16 +50,20 @@ if __name__ == "__main__":
              break
 
         pygame.time.delay( 20 )
-        draw_ph_homog( screen, ph_proj, color = 0 )
+        draw_ph_homog_plane( screen, ph_proj, P, color = 0 )
 
         keys = pygame.key.get_pressed()
         
         if keys[K_UP]:
-            fig = transform_ph( fig, mat_trz )
+            C = C@mat_trz 
+            P.translate( mat_trz )
         elif keys[K_DOWN]:
-            fig = transform_ph( fig, mat_trz1 )
+            C = C@mat_trz1
+            P.translate( mat_trz1 )
         if keys[K_LEFT]:
-            fig = transform_ph( fig, mat_rot )
+            C = C@mat_rot
+            P.rotate( mat_rot )
         elif keys[K_RIGHT]:
-            fig = transform_ph( fig, mat_rot1 )
+            C = C@mat_rot1
+            P.rotate( mat_rot1 )
         
