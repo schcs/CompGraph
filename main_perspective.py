@@ -19,27 +19,33 @@ if __name__ == "__main__":
 
     fig = cube_homog
     mat_r = matrix_rotation_3D_homog( .01, (-1,1,1))
-    print( mat_r )
-    C_x, C_y, C_z = 0, 0, 300
+    #print( mat_r )
+    C_x, C_y, C_z = 0, 0, 900
     P_x, P_y, P_z = 0, 0, 1 
     C = [ C_x, C_y, C_z, 1 ]
-    P = ProjPlane( [ P_x, P_x, P_z, 1 ], [1,0,0], [0,1,0] )
+    P = ProjPlane( array([ P_x, P_x, P_z, -1000 ]), array([1,0,0]), array([0,1,0]) )
 
     dir = array([0,0,5,1])
-
-    while True:
-        mat_trx = matrix_translation_3D_homog( [5,0,0] )
-        mat_trx1 = matrix_translation_3D_homog( [-5,0,0] )
-        mat_try = matrix_translation_3D_homog( [0,5,0] )
-        mat_try1 = matrix_translation_3D_homog( [0,-5,0] )
+    mat_trx = matrix_translation_3D_homog( [5,0,0] )
+    mat_trx1 = matrix_translation_3D_homog( [-5,0,0] )
+    mat_try = matrix_translation_3D_homog( [0,5,0] )
+    mat_try1 = matrix_translation_3D_homog( [0,-5,0] )
+    
+    while True:    
         mat_trz = matrix_translation_3D_homog( dir )
         mat_trz1 = matrix_translation_3D_homog( -dir )
         
-        mat_rot = matrix_rotation_3D_homog( .1, n = (0,1,0))
-        mat_rot1 = matrix_rotation_3D_homog( -.1, n = (0,1,0))
+        theta = .01
+        rot_dir = (0,1,0)
 
+        mat_rot = matrix_rotation_3D_homog( theta, n = rot_dir, C = C )
+        mat_rot1 = matrix_rotation_3D_homog( -theta, n = rot_dir, C = C )
+
+        mat_rot_orig = matrix_rotation_3D_homog( theta, n = rot_dir )
+        mat_rot_orig1 = matrix_rotation_3D_homog( -theta, n = rot_dir )
+    
         #fig = transform_ph( fig, mat_r )
-        ph_proj = perspective_projection_ph_onto_plane( fig, C, P )
+        ph_proj = perspective_projection_ph_onto_plane( fig, C, P.coord )
         draw_ph_homog_plane( screen, ph_proj, P, color = 255 )
         
         pygame.display.flip( )
@@ -55,15 +61,24 @@ if __name__ == "__main__":
         keys = pygame.key.get_pressed()
         
         if keys[K_UP]:
-            C = C@mat_trz 
+            C = C@mat_trz1 
             P.translate( mat_trz )
         elif keys[K_DOWN]:
-            C = C@mat_trz1
+            C = C@mat_trz
             P.translate( mat_trz1 )
         if keys[K_LEFT]:
-            C = C@mat_rot
-            P.rotate( mat_rot )
-        elif keys[K_RIGHT]:
+            P.rotate( rot_dir, -theta, C  )
+            dir = dir@mat_rot_orig1
             C = C@mat_rot1
-            P.rotate( mat_rot1 )
+        elif keys[K_RIGHT]:
+            P.rotate( rot_dir, theta, C  )
+            dir = dir@mat_rot_orig
+            C = C@mat_rot
+
+        #print( C, P.coord )
+
+
+        assert abs( dot( dir[[0,1,2]], P.x0 )) < 10**-6
+        assert abs( dot( dir[[0,1,2]], P.y0 )) < 10**-6
+
         
