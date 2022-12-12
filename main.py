@@ -16,13 +16,13 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode((600,480),HWSURFACE|DOUBLEBUF)
 
     fig = cube 
-    mat_r = matrix_infinitesimal_rotation_3D( .01, (-1,1,1))
+    mat_r = matrix_infinitesimal_rotation_3D( .02, (-1,1,1))
 
     while True:
         #mat_r = matrix_rotation_3D( .01, (-1,1,1))
         fig = transform_ph( fig, mat_r )
         ph_proj = project_ph_onto_plane( fig, [0,0,1])
-        draw_ph( screen, ph_proj, color = 255 )
+        draw_ph( screen, ph_proj, color = (255,255,255) )
 
         pygame.display.flip( )
 
