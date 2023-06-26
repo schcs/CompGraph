@@ -1,0 +1,84 @@
+\documentclass[12pt]{amsbook}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+%\usepackage{tikz-cd}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\renewcommand{\r}{\mathfrak r}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Ha}{\mathbb H}
+
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\R}{\mathbb R}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+\newcommand{\spec}[1]{\mbox{Spec}(#1)}
+\newcommand{\len}{\mbox{len}\,}
+\newcommand{\id}{\mbox{id}\,}
+\DeclareMathOperator{\sen}{\textrm{\rm sen}}
+%\newcommand{\sen}{\mbox{sen}\,} 
+\newcommand{\gl}[1]{\mbox{GL}_{#1}}
+\newcommand{\SL}[1]{\mbox{SL}_{#1}}
+\newcommand{\glv}[1]{\mbox{GL}(#1)}
+\newcommand{\slv}[1]{\mbox{SL}(#1)}
+\newcommand{\Sym}{\mbox{Sym}}
+\usepackage[portuguese]{babel}
+\newcommand{\rot}[1]{{\textrm{Rot}}_{#1}}
+\newcommand{\refl}[1]{{\textrm{Ref}}_{#1}}
+
+
+
+
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{corollary}[theorem]{Corolário}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{exercise}[theorem]{Exercício}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Exemplo}
+\newtheorem{definition}[theorem]{Definição}
+\renewcommand{\P}{\mathcal P}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\I}{\mathcal I}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\agl}{\mbox{AGL}}
+
+
+
+
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+\title{Álgebra e Geometria com Aplicações na Computação Gráfica}
+\author{Csaba Schneider}
+\maketitle
+\tableofcontents
+
+\include{transform}
+\include{transform_2}
+\include{transform_23D}
+\include{quat}
+\include{proj}
+
+
+\end{document}
