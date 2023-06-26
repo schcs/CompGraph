@@ -17,13 +17,13 @@ if __name__ == "__main__":
     pygame.init()
     screen = pygame.display.set_mode((600,480),HWSURFACE|DOUBLEBUF)
 
-    fig = cube_homog
+    fig = cube_homog1
     mat_r = matrix_rotation_3D_homog( .01, (-1,1,1))
     #print( mat_r )
-    C_x, C_y, C_z = 0, 0, 900
+    C_x, C_y, C_z = 0, 0, -100
     P_x, P_y, P_z = 0, 0, 1 
     C = [ C_x, C_y, C_z, 1 ]
-    P = ProjPlane( array([ P_x, P_x, P_z, -1000 ]), array([1,0,0]), array([0,1,0]) )
+    P = ProjPlane( array([ P_x, P_x, P_z, 0 ]), array([1,0,0]), array([0,1,0]) )
 
     dir = array([0,0,5,1])
     mat_trx = matrix_translation_3D_homog( [5,0,0] )
@@ -38,15 +38,15 @@ if __name__ == "__main__":
         theta = .01
         rot_dir = (0,1,0)
 
-        mat_rot = matrix_rotation_3D_homog( theta, n = rot_dir, C = C )
-        mat_rot1 = matrix_rotation_3D_homog( -theta, n = rot_dir, C = C )
+        mat_rot = matrix_rotation_3D_homog( theta, n = rot_dir, C = (0,0,300,1) )
+        mat_rot1 = matrix_rotation_3D_homog( -theta, n = rot_dir, C = (0,0,300,1) )
 
         mat_rot_orig = matrix_rotation_3D_homog( theta, n = rot_dir )
         mat_rot_orig1 = matrix_rotation_3D_homog( -theta, n = rot_dir )
     
         #fig = transform_ph( fig, mat_r )
         ph_proj = perspective_projection_ph_onto_plane( fig, C, P.coord )
-        draw_ph_homog_plane( screen, ph_proj, P, color = 255 )
+        draw_ph_homog_plane( screen, ph_proj, P, color = (255,255,255) )
         
         pygame.display.flip( )
 
@@ -61,19 +61,13 @@ if __name__ == "__main__":
         keys = pygame.key.get_pressed()
         
         if keys[K_UP]:
-            C = C@mat_trz1 
-            P.translate( mat_trz )
+            fig = transform_ph( fig, mat_trz1 )
         elif keys[K_DOWN]:
-            C = C@mat_trz
-            P.translate( mat_trz1 )
+            fig = transform_ph( fig, mat_trz )
         if keys[K_LEFT]:
-            P.rotate( rot_dir, -theta, C  )
-            dir = dir@mat_rot_orig1
-            C = C@mat_rot1
+            fig = transform_ph( fig, mat_rot )
         elif keys[K_RIGHT]:
-            P.rotate( rot_dir, theta, C  )
-            dir = dir@mat_rot_orig
-            C = C@mat_rot
+            fig = transform_ph( fig, mat_rot1 )
 
         #print( C, P.coord )
 
